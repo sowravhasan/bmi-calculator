@@ -1,0 +1,54 @@
+User-agent: *
+Allow: /
+
+# Main sitemap
+Sitemap: https://free-bmi-calculator.netlify.app/sitemap.xml
+
+# Block access to sensitive files
+Disallow: /_headers
+Disallow: /_redirects
+Disallow: /netlify.toml
+Disallow: /*.env
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /*.tmp$
+Disallow: /*.log$
+
+# Allow important SEO files
+Allow: /humans.txt
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /rss.xml
+Allow: /manifest.json
+Allow: /.well-known/
+
+# Crawl-delay for being respectful
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Block problematic bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

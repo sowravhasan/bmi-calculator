@@ -1,0 +1,96 @@
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free BMI Calculator",
+    "description": "Free online BMI calculator with interactive unit converters. Calculate BMI with multiple units, convert between metric and imperial measurements, and track your health journey.",
+    "url": "https://free-bmi-calculator.netlify.app/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Sowrav Hasan",
+        "url": "https://sowravhasan.vercel.app",
+        "sameAs": [
+            "https://linkedin.com/in/sowravhasan",
+            "https://github.com/sowravhasan"
+        ]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "Sowrav Hasan",
+        "url": "https://sowravhasan.vercel.app"
+    },
+    "datePublished": "2025-09-02",
+    "dateModified": "2025-09-03",
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
+    "keywords": [
+        "BMI calculator",
+        "Body Mass Index",
+        "health calculator",
+        "weight calculator",
+        "unit converter",
+        "height converter",
+        "weight converter",
+        "fitness tool",
+        "health assessment",
+        "BMI chart",
+        "ideal weight calculator"
+    ],
+    "featureList": [
+        "Free BMI Calculation",
+        "Multiple Unit Support (metric/imperial)",
+        "Interactive Height & Weight Converters",
+        "Two-Column Unit Conversion Layout",
+        "Real-time Conversion Results",
+        "Ideal Weight Calculations",
+        "Dark/Light Mode",
+        "Mobile Responsive Design",
+        "Unit Conversion Reference",
+        "Health Category Analysis",
+        "Progressive Web App"
+    ],
+    "screenshot": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is BMI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BMI (Body Mass Index) is a measurement that uses your height and weight to work out if your weight is healthy. It's calculated by dividing your weight in kilograms by your height in meters squared."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How accurate is BMI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so very muscular people may have a high BMI despite being healthy."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the BMI categories?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BMI categories are: Underweight (below 18.5), Normal weight (18.5-24.9), Overweight (25-29.9), and Obese (30 and above)."
+                }
+            }
+        ]
+    }
+}

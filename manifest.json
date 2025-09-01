@@ -1,0 +1,40 @@
+{
+    "name": "Free BMI Calculator",
+    "short_name": "BMI Calc",
+    "description": "Free online BMI calculator to check your Body Mass Index instantly. Simple, fast, and mobile-friendly.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f0fdf4",
+    "theme_color": "#059669",
+    "orientation": "portrait-primary",
+    "categories": [
+        "health",
+        "medical",
+        "fitness"
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "assets/icons/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Calculate BMI",
+            "short_name": "Calculate",
+            "description": "Open BMI Calculator",
+            "url": "/",
+            "icons": [
+                {
+                    "src": "assets/icons/favicon.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ]
+}

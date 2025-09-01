@@ -1,0 +1,47 @@
+/* TEAM */
+Developer: Sowrav Hasan
+Contact: sowravhasan101@gmail.com
+Portfolio: https://sowravhasan.vercel.app
+From: Bangladesh
+Twitter: @sowrav_hasan0
+LinkedIn: https://linkedin.com/in/sowrav-hasan
+
+/* THANKS */
+Tailwind CSS: https://tailwindcss.com
+Lucide Icons: https://lucide.dev
+Google Fonts: https://fonts.google.com
+Netlify: https://netlify.com
+
+/* SITE */
+Last update: 2025/09/03
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+Standards: HTML5, CSS3, ES6+
+Components: BMI Calculator, Unit Converter, Health Analytics
+Software: JavaScript, TailwindCSS, PWA
+Purpose: Free BMI Calculator for Health & Fitness
+
+/* TECHNOLOGY */
+Frontend: HTML5, CSS3, JavaScript ES6+
+Framework: TailwindCSS
+Icons: Lucide
+Fonts: Inter (Google Fonts)
+PWA: Service Worker, Web App Manifest
+SEO: Schema.org, Open Graph, Twitter Cards
+Hosting: Netlify
+Domain: https://free-bmi-calculator.netlify.app
+
+/* FEATURES */
+- Free BMI Calculator
+- Interactive Height & Weight Unit Converters
+- Two-Column Layout for Unit Converters
+- Multiple Unit Conversions (metric/imperial)
+- Real-time Conversion Results
+- Ideal Weight Calculations (Robinson, Devine, Miller, Hamwi)
+- Dark/Light Mode
+- Mobile Responsive
+- Progressive Web App (PWA)
+- Unit Conversion Reference 
+- Health Category Analysis
+- Real-time Calculations

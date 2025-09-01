@@ -1,0 +1,12 @@
+# Redirect old paths to new ones
+/bmi                    /               301
+/calculator             /               301
+/bmi-calculator         /               301
+/check-bmi             /               301
+
+# 404 page
+/*                     /               404
+
+# Force HTTPS
+http://free-bmi-calculator.netlify.app/*    https://free-bmi-calculator.netlify.app/:splat    301!
+http://www.free-bmi-calculator.netlify.app/*    https://free-bmi-calculator.netlify.app/:splat    301!

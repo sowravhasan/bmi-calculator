@@ -1,0 +1,64 @@
+# BMI Calculator Deploy Configuration for Netlify
+
+# Build settings
+[build]
+  publish = "."
+  command = "echo 'Static site - no build required'"
+
+# Headers for SEO and Security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# SPA routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# SEO-friendly redirects
+[[redirects]]
+  from = "/bmi"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/calculator"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/bmi-calculator"
+  to = "/"
+  status = 301
