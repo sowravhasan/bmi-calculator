@@ -26,6 +26,7 @@ class BMICalculator {
     this.setupUnitConverters();
     this.createErrorContainer();
     this.initializeUnitTracking();
+    this.toggleFeetInchesInput(); // Initialize the correct height input display
   }
 
   initializeUnitTracking() {
@@ -902,15 +903,26 @@ function initDarkMode() {
   if (isDark) {
     document.documentElement.classList.add("dark");
     darkModeIcon.setAttribute("data-lucide", "sun");
+    darkModeToggle.setAttribute("aria-pressed", "true");
   } else {
     darkModeIcon.setAttribute("data-lucide", "moon");
+    darkModeToggle.setAttribute("aria-pressed", "false");
   }
 
   darkModeToggle?.addEventListener("click", () => {
+    // Add changing animation class
+    darkModeIcon.classList.add("changing");
+
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("darkMode", isDark);
     darkModeIcon.setAttribute("data-lucide", isDark ? "sun" : "moon");
+    darkModeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
     lucide.createIcons();
+
+    // Remove animation class after animation completes
+    setTimeout(() => {
+      darkModeIcon.classList.remove("changing");
+    }, 600);
   });
 }
 

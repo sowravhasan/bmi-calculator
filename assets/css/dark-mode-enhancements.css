@@ -1,0 +1,148 @@
+/**
+ * Dark Mode Toggle Enhancements
+ * Enhanced hover effects and icon visibility
+ */
+
+/* Dark Mode Toggle Button Styling */
+#darkModeToggle {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced hover effects */
+#darkModeToggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgb(34, 197, 94) !important;
+    /* Green-500 */
+    border-color: rgb(34, 197, 94) !important;
+}
+
+.dark #darkModeToggle:hover {
+    background-color: rgb(75, 85, 99) !important;
+    /* Gray-600 */
+    border-color: rgb(75, 85, 99) !important;
+}
+
+/* Icon styling and transitions */
+#darkModeIcon {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.8;
+    transform-origin: center;
+}
+
+/* Icon hover effects */
+#darkModeToggle:hover #darkModeIcon {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+    color: white !important;
+}
+
+.dark #darkModeToggle:hover #darkModeIcon {
+    color: rgb(34, 197, 94) !important;
+    /* Green-500 */
+    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.5));
+}
+
+/* Icon animation when changing modes */
+#darkModeIcon.changing {
+    animation: iconSwitch 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes iconSwitch {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(180deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+/* Focus states for accessibility */
+#darkModeToggle:focus {
+    outline: 2px solid rgb(34, 197, 94);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(34, 197, 94);
+}
+
+.dark #darkModeToggle:focus {
+    outline: 2px solid rgb(34, 197, 94);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgb(17, 24, 39), 0 0 0 4px rgb(34, 197, 94);
+}
+
+/* Active state */
+#darkModeToggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#darkModeToggle:active #darkModeIcon {
+    transform: scale(0.95);
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+    #darkModeToggle {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+
+    /* Reduce hover effects on touch devices */
+    @media (hover: none) {
+        #darkModeToggle:hover {
+            transform: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #darkModeToggle:hover #darkModeIcon {
+            transform: none;
+            opacity: 0.8;
+        }
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    #darkModeToggle {
+        border-width: 2px;
+        border-style: solid;
+    }
+
+    #darkModeIcon {
+        opacity: 1;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    #darkModeToggle,
+    #darkModeIcon {
+        transition: none;
+    }
+
+    #darkModeIcon.changing {
+        animation: none;
+    }
+
+    @keyframes iconSwitch {
+
+        from,
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+}

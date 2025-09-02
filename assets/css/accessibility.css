@@ -1,0 +1,289 @@
+/* Accessibility Improvements - High Contrast and ARIA Support */
+
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Improved contrast for better accessibility */
+@media (prefers-contrast: high) {
+
+    /* High contrast mode adjustments */
+    .text-green-600 {
+        color: #047857 !important;
+    }
+
+    .dark .text-green-400 {
+        color: #34d399 !important;
+    }
+
+    .text-gray-600 {
+        color: #374151 !important;
+    }
+
+    .dark .text-gray-300 {
+        color: #f3f4f6 !important;
+    }
+}
+
+/* Enhanced contrast for specific elements identified in audit */
+body.font-inter {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+}
+
+.dark body.font-inter {
+    color: #f9fafb !important;
+    background-color: #111827 !important;
+}
+
+/* Improve contrast for feature list items */
+.text-green-600.dark\:text-green-400 span {
+    color: #047857 !important;
+    font-weight: 600 !important;
+}
+
+.dark .text-green-600.dark\:text-green-400 span {
+    color: #10b981 !important;
+    font-weight: 600 !important;
+}
+
+/* Improve Save BMI button contrast */
+#saveBMIBtn {
+    background-color: #047857 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.dark #saveBMIBtn {
+    background-color: #059669 !important;
+    color: #ffffff !important;
+}
+
+#saveBMIBtn:hover {
+    background-color: #065f46 !important;
+}
+
+.dark #saveBMIBtn:hover {
+    background-color: #047857 !important;
+}
+
+/* Improve footer link contrast */
+footer a {
+    color: #047857 !important;
+    font-weight: 600 !important;
+    text-decoration: underline !important;
+}
+
+.dark footer a {
+    color: #10b981 !important;
+}
+
+footer a:hover {
+    color: #065f46 !important;
+    text-decoration: underline !important;
+}
+
+.dark footer a:hover {
+    color: #34d399 !important;
+}
+
+/* Improve general footer contrast */
+footer {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+}
+
+.dark footer {
+    background-color: #1f2937 !important;
+    color: #f9fafb !important;
+    border-color: #374151 !important;
+}
+
+/* Enhanced focus indicators for better accessibility */
+button:focus,
+select:focus,
+input:focus,
+.faq-question:focus {
+    outline: 3px solid #059669 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2) !important;
+}
+
+.dark button:focus,
+.dark select:focus,
+.dark input:focus,
+.dark .faq-question:focus {
+    outline: 3px solid #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Improve button contrast across the site */
+button {
+    font-weight: 600 !important;
+}
+
+/* Ensure minimum contrast ratios */
+.text-xs,
+.text-sm {
+    color: #374151 !important;
+}
+
+.dark .text-xs,
+.dark .text-sm {
+    color: #d1d5db !important;
+}
+
+/* High contrast for interactive elements */
+.hover\:bg-green-200:hover {
+    background-color: #a7f3d0 !important;
+    color: #065f46 !important;
+}
+
+.dark .hover\:bg-gray-600:hover {
+    background-color: #4b5563 !important;
+    color: #f9fafb !important;
+}
+
+/* Improve visibility of icons */
+[data-lucide] {
+    stroke-width: 2.5 !important;
+}
+
+/* Better contrast for form labels */
+label {
+    color: #111827 !important;
+    font-weight: 600 !important;
+}
+
+.dark label {
+    color: #f9fafb !important;
+}
+
+/* Enhanced placeholder text visibility */
+input::placeholder,
+select::placeholder {
+    color: #6b7280 !important;
+    opacity: 0.8 !important;
+}
+
+.dark input::placeholder,
+.dark select::placeholder {
+    color: #9ca3af !important;
+}
+
+/* Ensure proper contrast for disabled states */
+button:disabled,
+input:disabled,
+select:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Improved error and success states */
+.form-error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2 !important;
+}
+
+.dark .form-error {
+    border-color: #ef4444 !important;
+    background-color: #450a0a !important;
+}
+
+.form-success {
+    border-color: #059669 !important;
+    background-color: #ecfdf5 !important;
+}
+
+.dark .form-success {
+    border-color: #10b981 !important;
+    background-color: #022c22 !important;
+}
+
+/* Better visual hierarchy */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #111827 !important;
+    font-weight: 700 !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+    color: #f9fafb !important;
+}
+
+/* Ensure proper color contrast for all text elements */
+p,
+span,
+div {
+    color: inherit;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print accessibility */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        color: #000 !important;
+        text-decoration: underline !important;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+    }
+}
