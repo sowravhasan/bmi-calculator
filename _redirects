@@ -1,0 +1,7 @@
+# SEO-friendly redirects
+/bmi              /             301
+/calculator       /             301
+/bmi-calculator   /             301
+
+# SPA fallback
+/*               /index.html    200

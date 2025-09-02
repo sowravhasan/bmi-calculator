@@ -1,0 +1,81 @@
+/* Gender button styles */
+.gender-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  background: none !important;
+  width: 100% !important;
+  padding: 0.75rem !important;
+}
+
+.gender-btn.selected {
+  border-color: #059669 !important;
+  background-color: rgba(5, 150, 105, 0.1) !important;
+}
+
+.dark .gender-btn.selected {
+  border-color: #10b981 !important;
+  background-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Mobile optimizations for zero padding */
+
+@media (max-width: 768px) {
+  /* Zero out all container padding */
+  main.max-w-6xl, main.max-w-7xl {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Remove horizontal margins and padding from all sections */
+  main section, main div.bg-white {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Fix padding on main BMI calculator */
+  #bmi-calculator {
+    padding: 0 !important;
+  }
+  
+  /* Fix unit converter padding */
+  #unit-conversion {
+    padding: 0 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Adjust form controls */
+  input, select, textarea {
+    width: 100% !important;
+  }
+  
+  /* BMI calculator specific fixes */
+  #bmi-calculator .grid.grid-cols-3 {
+    grid-template-columns: 2fr 1fr !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+  /* Reduce fonts for very small screens */
+  #heightUnitFrom, #heightUnitTo, 
+  #weightUnitFrom, #weightUnitTo {
+    font-size: 14px !important;
+  }
+  
+  /* Optimize gender buttons for small screens */
+  .gender-btn {
+    padding: 0.5rem 0.25rem !important;
+    font-size: 14px !important;
+  }
+  
+  .gender-btn i {
+    height: 0.875rem !important;
+    width: 0.875rem !important;
+  }
+}

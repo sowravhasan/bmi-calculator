@@ -582,9 +582,7 @@ class BMICalculator {
     if (this.isFormValid()) {
       const { heightInCm, weightInKg } = this.getMetricValues();
       const age = parseInt(document.getElementById("age").value);
-      const gender = document.querySelector(
-        'input[name="gender"]:checked'
-      )?.value;
+      const gender = document.getElementById("genderInput").value;
       const activityLevel = this.activityLevel.value;
 
       if (heightInCm && weightInKg && age && gender) {
@@ -606,7 +604,7 @@ class BMICalculator {
   isFormValid() {
     const { heightInCm, weightInKg } = this.getMetricValues();
     const age = parseInt(document.getElementById("age").value);
-    const gender = document.querySelector('input[name="gender"]:checked');
+    const gender = document.getElementById("genderInput").value;
 
     return (
       heightInCm &&
@@ -655,7 +653,7 @@ class BMICalculator {
   validateForm() {
     const { heightInCm, weightInKg } = this.getMetricValues();
     const age = parseInt(document.getElementById("age").value);
-    const gender = document.querySelector('input[name="gender"]:checked');
+    const gender = document.getElementById("genderInput").value;
 
     if (!heightInCm || heightInCm < 50 || heightInCm > 300) {
       this.showError("Please enter a valid height (50-300 cm equivalent)");
