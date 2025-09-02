@@ -1,0 +1,399 @@
+/* Enhanced Mobile Responsiveness - 2025 Optimized */
+
+/* Base mobile optimizations */
+@media (max-width: 768px) {
+
+    /* Container and layout fixes */
+    .max-w-6xl,
+    .max-w-7xl {
+        max-width: 100% !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Main content padding */
+    main {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    /* Section spacing */
+    section {
+        margin-bottom: 1rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Card components */
+    .rounded-2xl,
+    .rounded-xl {
+        border-radius: 0.75rem !important;
+        padding: 1rem !important;
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    /* Grid layouts - stack on mobile */
+    .lg\\:grid-cols-3,
+    .md\\:grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    /* Form elements */
+    input,
+    select,
+    button {
+        font-size: 16px !important;
+        /* Prevents zoom on iOS */
+        padding: 0.625rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Form specific grids */
+    .sm\\:grid-cols-3 .sm\\:col-span-2,
+    .sm\\:grid-cols-2 {
+        grid-column: span 1 !important;
+    }
+
+    /* Text sizes */
+    .text-4xl,
+    .text-5xl {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .text-3xl {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .text-2xl {
+        font-size: 1.125rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .text-xl {
+        font-size: 1rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .text-lg {
+        font-size: 0.95rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Space reduction */
+    .space-y-6>*+*,
+    .space-y-4>*+* {
+        margin-top: 0.5rem !important;
+    }
+
+    .space-y-8>*+* {
+        margin-top: 1rem !important;
+    }
+
+    /* Button optimizations */
+    .flex.space-x-4 {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    .flex.space-x-4>*+* {
+        margin-left: 0 !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* Unit converter specific fixes */
+    #heightResultValue,
+    #weightResultValue {
+        font-size: 0.875rem !important;
+        padding: 0.5rem !important;
+    }
+
+    /* Results sidebar */
+    .lg\\:col-span-2~div {
+        margin-top: 1rem !important;
+    }
+
+    /* BMI results display */
+    #bmiScore {
+        font-size: 2rem !important;
+    }
+
+    /* FAQ section */
+    .faq-question {
+        padding: 0.75rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Table responsiveness */
+    .overflow-x-auto {
+        font-size: 0.75rem !important;
+    }
+
+    table td,
+    table th {
+        padding: 0.25rem !important;
+    }
+
+    /* Header optimizations */
+    header .max-w-7xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    header h1 {
+        font-size: 1rem !important;
+    }
+
+    /* Footer optimizations */
+    footer {
+        padding: 1rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    /* Conversion displays */
+    #heightConversion,
+    #weightConversion {
+        font-size: 0.75rem !important;
+        margin-top: 0.25rem !important;
+    }
+
+    /* Health tips section */
+    #healthTips {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Action buttons in results */
+    .grid.grid-cols-2.gap-2 button {
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Progress bar labels */
+    .grid.grid-cols-4.text-xs {
+        font-size: 0.65rem !important;
+    }
+
+    /* BMI chart items */
+    .space-y-2 .flex.justify-between {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Gender button optimization */
+    .gender-btn {
+        padding: 0.75rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Activity level select */
+    #activityLevel {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Very small devices (phones in portrait) */
+@media (max-width: 400px) {
+
+    /* Further compression for small phones */
+    .rounded-xl,
+    .rounded-2xl {
+        padding: 0.75rem !important;
+        margin-left: 0.25rem !important;
+        margin-right: 0.25rem !important;
+    }
+
+    /* Text compression */
+    .text-2xl {
+        font-size: 1rem !important;
+    }
+
+    .text-xl {
+        font-size: 0.95rem !important;
+    }
+
+    .text-lg {
+        font-size: 0.9rem !important;
+    }
+
+    .text-base {
+        font-size: 0.85rem !important;
+    }
+
+    /* Form elements for very small screens */
+    input,
+    select {
+        padding: 0.5rem !important;
+        font-size: 14px !important;
+    }
+
+    /* Button text */
+    button {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    /* Conversion result inputs */
+    #heightResultValue,
+    #weightResultValue {
+        font-size: 0.75rem !important;
+        padding: 0.375rem !important;
+    }
+
+    /* Further reduce spacing */
+    .space-y-4>*+*,
+    .space-y-6>*+* {
+        margin-top: 0.375rem !important;
+    }
+
+    /* Icon sizes */
+    [data-lucide] {
+        width: 1rem !important;
+        height: 1rem !important;
+    }
+
+    /* Header on very small screens */
+    header .flex.items-center.space-x-2 h1 {
+        font-size: 0.9rem !important;
+    }
+
+    /* FAQ questions */
+    .faq-question {
+        font-size: 0.85rem !important;
+        padding: 0.5rem !important;
+    }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+
+    /* Optimize for landscape mobile */
+    .grid.lg\\:grid-cols-3 {
+        grid-template-columns: 2fr 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Adjust heights for landscape */
+    input,
+    select {
+        padding: 0.5rem !important;
+    }
+
+    /* Reduce vertical spacing in landscape */
+    section {
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* Touch targets optimization */
+@media (max-width: 768px) {
+
+    /* Ensure minimum touch target size of 44px */
+    button,
+    .faq-question,
+    .gender-btn {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+
+    /* Input field touch targets */
+    input,
+    select {
+        min-height: 44px !important;
+    }
+
+    /* Dark mode toggle */
+    #darkModeToggle {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+
+    /* Reduce animations on mobile for better performance */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.2s !important;
+        transition-duration: 0.2s !important;
+    }
+
+    /* Disable hover effects on touch devices */
+    @media (hover: none) {
+
+        .hover\\:bg-green-200:hover,
+        .hover\\:bg-blue-200:hover,
+        .hover\\:border-green-400:hover,
+        .hover\\:border-blue-400:hover {
+            background-color: inherit !important;
+            border-color: inherit !important;
+        }
+    }
+}
+
+/* Fix for input zoom on iOS */
+@supports (-webkit-touch-callout: none) {
+
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Improved contrast for mobile readability */
+@media (max-width: 768px) {
+    .text-gray-600 {
+        color: #4b5563 !important;
+    }
+
+    .dark .text-gray-600 {
+        color: #d1d5db !important;
+    }
+
+    .text-gray-500 {
+        color: #374151 !important;
+    }
+
+    .dark .text-gray-500 {
+        color: #e5e7eb !important;
+    }
+}
+
+/* Sticky header on mobile */
+@media (max-width: 768px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 50 !important;
+        backdrop-filter: blur(10px) !important;
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    .dark header {
+        background-color: rgba(31, 41, 55, 0.95) !important;
+    }
+}
+
+/* Safe area handling for modern phones */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        body {
+            padding-left: max(0.5rem, env(safe-area-inset-left)) !important;
+            padding-right: max(0.5rem, env(safe-area-inset-right)) !important;
+        }
+
+        header,
+        footer {
+            padding-left: max(1rem, env(safe-area-inset-left)) !important;
+            padding-right: max(1rem, env(safe-area-inset-right)) !important;
+        }
+    }
+}

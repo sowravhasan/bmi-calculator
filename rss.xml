@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Free BMI Calculator Online - Health Updates</title>
+        <link>https://free-bmi-calculator.netlify.app/</link>
+        <description>Latest updates, health tips, and features for the Free BMI Calculator Online. Stay informed about BMI calculation, weight management, and health assessment tools.</description>
+        <language>en-US</language>
+        <lastBuildDate>Mon, 02 Sep 2025 12:00:00 GMT</lastBuildDate>
+        <pubDate>Mon, 02 Sep 2025 12:00:00 GMT</pubDate>
+        <ttl>1440</ttl>
+        <generator>Free BMI Calculator Online</generator>
+        <managingEditor>sowravhasan101@gmail.com (Sowrav Hasan)</managingEditor>
+        <webMaster>sowravhasan101@gmail.com (Sowrav Hasan)</webMaster>
+        <category>Health</category>
+        <category>Fitness</category>
+        <category>Weight Management</category>
+        <category>BMI Calculator</category>
+        <image>
+            <url>https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg</url>
+            <title>Free BMI Calculator Online</title>
+            <link>https://free-bmi-calculator.netlify.app/</link>
+            <width>1200</width>
+            <height>630</height>
+        </image>
+        <atom:link href="https://free-bmi-calculator.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+
+        <item>
+            <title>Mobile Responsiveness Update - Enhanced User Experience</title>
+            <link>https://free-bmi-calculator.netlify.app/#mobile-update</link>
+            <description>Major mobile responsiveness improvements for better user experience on all devices. Enhanced touch targets, optimized layouts, and improved performance.</description>
+            <content:encoded><![CDATA[
+        <h3>Mobile Responsiveness Enhancement</h3>
+        <p>We've significantly improved the mobile experience of our BMI Calculator with the following updates:</p>
+        <ul>
+          <li><strong>Touch-Friendly Interface:</strong> All buttons and interactive elements now meet the 44px minimum touch target size for better accessibility.</li>
+          <li><strong>Responsive Layout:</strong> Optimized grid layouts that stack properly on mobile devices for better content visibility.</li>
+          <li><strong>Performance Improvements:</strong> Reduced animations and optimized CSS for faster loading on mobile networks.</li>
+          <li><strong>Enhanced Form Experience:</strong> Better input field sizing and automatic scrolling to results on mobile devices.</li>
+        </ul>
+        <p>These improvements ensure that calculating your BMI is now easier and more accurate across all device types.</p>
+      ]]>            </content:encoded>
+            <pubDate>Mon, 02 Sep 2025 12:00:00 GMT</pubDate>
+            <guid isPermaLink="false">mobile-update-2025-09-02</guid>
+            <category>Updates</category>
+            <category>Mobile</category>
+        </item>
+
+        <item>
+            <title>Understanding BMI Categories - Health Guidelines 2025</title>
+            <link>https://free-bmi-calculator.netlify.app/#bmi-categories</link>
+            <description>Learn about the different BMI categories and what they mean for your health. Updated guidelines for 2025 with comprehensive health recommendations.</description>
+            <content:encoded><![CDATA[
+        <h3>BMI Categories Explained</h3>
+        <p>Understanding your BMI category is crucial for maintaining good health. Here's what each category means:</p>
+        <ul>
+          <li><strong>Underweight (BMI &lt; 18.5):</strong> May indicate nutritional deficiency or underlying health conditions.</li>
+          <li><strong>Normal Weight (BMI 18.5-24.9):</strong> Indicates a healthy weight range associated with lowest risk of health problems.</li>
+          <li><strong>Overweight (BMI 25-29.9):</strong> Suggests increased risk for health issues; lifestyle changes recommended.</li>
+          <li><strong>Obese (BMI ≥ 30):</strong> Associated with higher risk of serious health conditions; medical consultation advised.</li>
+        </ul>
+        <p>Remember, BMI is a screening tool and should be considered alongside other health factors.</p>
+      ]]>            </content:encoded>
+            <pubDate>Sat, 31 Aug 2025 10:00:00 GMT</pubDate>
+            <guid isPermaLink="false">bmi-categories-2025-08-31</guid>
+            <category>Health</category>
+            <category>Education</category>
+        </item>
+
+        <item>
+            <title>New Unit Conversion Features - Metric and Imperial Support</title>
+            <link>https://free-bmi-calculator.netlify.app/#unit-conversion</link>
+            <description>Enhanced unit conversion tools now support multiple measurement systems including metric, imperial, and specialized units for global users.</description>
+            <content:encoded><![CDATA[
+        <h3>Enhanced Unit Conversion</h3>
+        <p>Our BMI Calculator now includes comprehensive unit conversion tools:</p>
+        <h4>Height Units Supported:</h4>
+        <ul>
+          <li>Centimeters (cm)</li>
+          <li>Meters (m)</li>
+          <li>Feet and Inches (ft/in)</li>
+          <li>Inches (in)</li>
+          <li>Millimeters (mm)</li>
+        </ul>
+        <h4>Weight Units Supported:</h4>
+        <ul>
+          <li>Kilograms (kg)</li>
+          <li>Pounds (lbs)</li>
+          <li>Stones (st)</li>
+          <li>Ounces (oz)</li>
+          <li>Grams (g)</li>
+        </ul>
+        <p>Live conversion displays help you understand measurements in different units instantly.</p>
+      ]]>            </content:encoded>
+            <pubDate>Thu, 29 Aug 2025 14:30:00 GMT</pubDate>
+            <guid isPermaLink="false">unit-conversion-2025-08-29</guid>
+            <category>Features</category>
+            <category>Updates</category>
+        </item>
+
+        <item>
+            <title>BMI Calculator Launch - Free Health Assessment Tool</title>
+            <link>https://free-bmi-calculator.netlify.app/</link>
+            <description>Introducing our free, fast, and accurate BMI Calculator with comprehensive health features including ideal weight calculation and calorie needs assessment.</description>
+            <content:encoded><![CDATA[
+        <h3>Welcome to Free BMI Calculator Online</h3>
+        <p>We're excited to launch our comprehensive BMI calculation tool designed to help you monitor your health and wellness journey.</p>
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>Instant BMI Calculation:</strong> Get your Body Mass Index results immediately with detailed health category information.</li>
+          <li><strong>Ideal Weight Calculator:</strong> Discover your healthy weight range based on your height and age.</li>
+          <li><strong>Daily Calorie Needs:</strong> Calculate your recommended daily caloric intake based on activity level.</li>
+          <li><strong>Multiple Units:</strong> Support for both metric and imperial measurement systems.</li>
+          <li><strong>Health Recommendations:</strong> Personalized tips based on your BMI category.</li>
+          <li><strong>Mobile Responsive:</strong> Works perfectly on all devices and screen sizes.</li>
+          <li><strong>Privacy Focused:</strong> All calculations are performed locally - your data never leaves your device.</li>
+        </ul>
+        <p>Start your health journey today with our free BMI calculator!</p>
+      ]]>            </content:encoded>
+            <pubDate>Mon, 01 Jan 2025 00:00:00 GMT</pubDate>
+            <guid isPermaLink="false">bmi-calculator-launch-2025</guid>
+            <category>Launch</category>
+            <category>Health</category>
+        </item>
+
+    </channel>
+</rss>

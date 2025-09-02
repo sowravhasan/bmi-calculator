@@ -1,0 +1,52 @@
+/* TEAM */
+Developer: Sowrav Hasan
+Contact: sowravhasan101@gmail.com
+Website: https://sowravhasan.vercel.app
+Location: Global
+
+/* SITE */
+Last update: 2025/09/02
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+Technologies: HTML5, CSS3, JavaScript ES6, Tailwind CSS
+
+/* PROJECT */
+Name: Free BMI Calculator Online
+Description: A fast, accurate, and mobile-friendly BMI calculator
+Version: 2.0
+Launch Date: 2025/01/01
+Features: BMI Calculation, Unit Conversion, Health Recommendations, Mobile Responsive
+
+/* THANKS */
+Frameworks: Tailwind CSS for responsive design
+Icons: Lucide Icons for beautiful UI elements
+Fonts: Inter font family for clean typography
+Inspiration: Health and wellness community
+Special Thanks: Open source contributors and health professionals
+
+/* STANDARDS */
+W3C Markup Validator: Passed
+WCAG 2.1 AA: Compliant
+Mobile Friendly: Yes
+PWA Ready: Yes
+SEO Optimized: Yes
+Performance: Optimized for speed
+
+/* CONTACT */
+Website: https://free-bmi-calculator.netlify.app/
+Issues: Report bugs and suggestions welcome
+License: MIT License
+Copyright: 2025 - Free BMI Calculator
+
+                              .-""""""-.
+                            .'          '.
+                           /   O      O   \
+                          :                :
+                          |                |
+                          :       __       :
+                           \  .-"`  `"-.  /
+                            '.          .'
+                              '-.......-'
+                         
+                         HUMANELY CRAFTED WITH ❤️
