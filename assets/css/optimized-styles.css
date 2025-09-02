@@ -1,0 +1,318 @@
+/* BMI Calculator - Optimized CSS for Speed and SEO */
+
+/* Critical CSS above the fold */
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Height input layout improvements */
+#standardHeightInput,
+#feetInchesInput {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#feetInchesInput.hidden {
+    display: none;
+}
+
+#standardHeightInput.hidden {
+    display: none;
+}
+
+/* Ensure feet and inches inputs are properly sized */
+#feetInchesInput input[type="number"] {
+    text-align: center;
+}
+
+#feetInchesInput input[type="number"]:first-child::placeholder {
+    text-align: center;
+}
+
+#feetInchesInput input[type="number"]:nth-child(2)::placeholder {
+    text-align: center;
+}
+
+/* Button loading state - Critical for UX */
+button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+button.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Results animation - Improve perceived performance */
+.results-enter {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BMI category colors - Critical for visual feedback */
+.bmi-underweight {
+    background-color: #3b82f6;
+}
+
+.bmi-normal {
+    background-color: #10b981;
+}
+
+.bmi-overweight {
+    background-color: #f59e0b;
+}
+
+.bmi-obese {
+    background-color: #ef4444;
+}
+
+/* Gender button styling - Critical for UX */
+.gender-btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: transparent;
+    border: 2px solid #d1d5db;
+}
+
+.gender-btn:hover {
+    border-color: #059669;
+    background-color: rgba(5, 150, 105, 0.05);
+}
+
+.gender-btn.selected {
+    background-color: #059669 !important;
+    border-color: #059669 !important;
+    color: white !important;
+}
+
+.gender-btn.selected * {
+    color: white !important;
+}
+
+.dark .gender-btn {
+    border-color: #4b5563;
+}
+
+.dark .gender-btn:hover {
+    border-color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.dark .gender-btn.selected {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+}
+
+/* Form input enhancements */
+input:focus,
+select:focus {
+    outline: none;
+    ring-width: 2px;
+    ring-color: #059669;
+    border-color: transparent;
+}
+
+.dark input:focus,
+.dark select:focus {
+    ring-color: #10b981;
+}
+
+/* Error container styling */
+.error-container {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+/* Progress bar animations */
+.bmi-progress {
+    transition: width 1s ease-in-out, background-color 0.5s ease;
+}
+
+/* FAQ accordion styling */
+.faq-question svg {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer:not(.hidden) {
+    max-height: 200px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .text-4xl {
+        font-size: 2rem;
+    }
+
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+
+    .grid-cols-3 {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+/* Reduce repaints/reflows */
+.results-card {
+    contain: layout style paint;
+}
+
+/* Critical font loading */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #059669;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        color: black !important;
+        background: white !important;
+    }
+}
+
+/* Container queries for modern browsers */
+@container (min-width: 768px) {
+    .container-responsive {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Optimize text rendering */
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lazy loading placeholder */
+.lazy-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #4a5568;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}

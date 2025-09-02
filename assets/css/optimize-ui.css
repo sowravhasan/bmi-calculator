@@ -1,81 +1,214 @@
 /* Gender button styles */
 .gender-btn {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 42px !important;
-  background: none !important;
-  width: 100% !important;
-  padding: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    background: none !important;
+    width: 100% !important;
+    padding: 0.75rem !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Smoother transition */
+    position: relative !important;
+    /* For pseudo-element highlight */
 }
 
-.gender-btn.selected {
-  border-color: #059669 !important;
-  background-color: rgba(5, 150, 105, 0.1) !important;
+/* Default state styling */
+.gender-btn i,
+.gender-btn span {
+    transition: color 0.3s ease !important;
 }
 
-.dark .gender-btn.selected {
-  border-color: #10b981 !important;
-  background-color: rgba(16, 185, 129, 0.2) !important;
+/* Stronger force override for Tailwind classes that might interfere with our gender button styles */
+button[type="button"].gender-btn.p-3 {
+    background: none !important;
+}
+
+button[type="button"].gender-btn.selected.p-3 {
+    background-color: rgba(5, 150, 105, 0.75) !important;
+    /* Force background color for selected state */
+}
+
+.dark button[type="button"].gender-btn.selected.p-3 {
+    background-color: rgba(16, 185, 129, 0.85) !important;
+    /* Force background color for dark mode selected state */
+}
+
+.gender-btn.selected i {
+    color: #ffffff !important;
+    /* White icon color when selected */
+    transform: scale(1.15) !important;
+    /* Larger icon */
+}
+
+.gender-btn.selected span {
+    font-weight: 700 !important;
+    /* Bolder text */
+    color: #ffffff !important;
+    /* White text color */
+}
+
+.dark .gender-btn.selected i {
+    color: #ffffff !important;
+    /* White icon in dark mode */
+}
+
+.dark .gender-btn.selected span {
+    font-weight: 700 !important;
+    /* Bolder text in dark mode */
+    color: #ffffff !important;
+    /* White text in dark mode */
+}
+
+.gender-btn.selected,
+button.gender-btn.selected {
+    border-color: #047857 !important;
+    /* Darker green border */
+    background-color: rgba(5, 150, 105, 0.75) !important;
+    /* Much more visible background (greatly increased opacity) */
+    color: #ffffff !important;
+    /* White text color */
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.6) !important;
+    /* Enhanced outline glow effect */
+    font-weight: 700 !important;
+    /* Make text bolder */
+    transform: scale(1.02) !important;
+    /* Slightly enlarge the button */
+}
+
+.dark .gender-btn.selected,
+.dark button.gender-btn.selected {
+    border-color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.85) !important;
+    /* Even more visible in dark mode (greatly increased opacity) */
+    color: #ffffff !important;
+    /* White text for dark mode too */
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.75) !important;
+    /* Enhanced outline glow effect */
+    transform: scale(1.02) !important;
+    /* Slightly enlarge the button */
 }
 
 /* Mobile optimizations for zero padding */
 
 @media (max-width: 768px) {
-  /* Zero out all container padding */
-  main.max-w-6xl, main.max-w-7xl {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    width: 100% !important;
-  }
-  
-  /* Remove horizontal margins and padding from all sections */
-  main section, main div.bg-white {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  
-  /* Fix padding on main BMI calculator */
-  #bmi-calculator {
-    padding: 0 !important;
-  }
-  
-  /* Fix unit converter padding */
-  #unit-conversion {
-    padding: 0 !important;
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  /* Adjust form controls */
-  input, select, textarea {
-    width: 100% !important;
-  }
-  
-  /* BMI calculator specific fixes */
-  #bmi-calculator .grid.grid-cols-3 {
-    grid-template-columns: 2fr 1fr !important;
-  }
+
+    /* Zero out all container padding */
+    main.max-w-6xl,
+    main.max-w-7xl {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Remove horizontal margins and padding from all sections */
+    main section,
+    main div.bg-white {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Fix padding on main BMI calculator */
+    #bmi-calculator {
+        padding: 0 !important;
+    }
+
+    /* Fix unit converter padding */
+    #unit-conversion {
+        padding: 0 !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Adjust form controls */
+    input,
+    select,
+    textarea {
+        width: 100% !important;
+    }
+
+    /* BMI calculator specific fixes */
+    #bmi-calculator .grid.grid-cols-3 {
+        grid-template-columns: 2fr 1fr !important;
+    }
+
+    /* Fix card containers to have reduced side padding */
+    .rounded-2xl,
+    .rounded-xl,
+    .p-8,
+    .p-6 {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Fix unit converter sections */
+    #unit-conversion .bg-white,
+    #unit-conversion .bg-white.dark\:bg-gray-800 {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    /* Fix all section spacing */
+    section.mb-16,
+    section.mb-12,
+    section.mb-8 {
+        margin-bottom: 1rem !important;
+    }
+
+    /* Fix result sections */
+    .bg-green-50,
+    .bg-blue-50,
+    .dark\:bg-green-900\/20,
+    .dark\:bg-blue-900\/20 {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Optimize grid layouts for mobile */
+    .grid {
+        gap: 0.5rem !important;
+    }
 }
 
 /* Extra small devices */
 @media (max-width: 400px) {
-  /* Reduce fonts for very small screens */
-  #heightUnitFrom, #heightUnitTo, 
-  #weightUnitFrom, #weightUnitTo {
-    font-size: 14px !important;
-  }
-  
-  /* Optimize gender buttons for small screens */
-  .gender-btn {
-    padding: 0.5rem 0.25rem !important;
-    font-size: 14px !important;
-  }
-  
-  .gender-btn i {
-    height: 0.875rem !important;
-    width: 0.875rem !important;
-  }
+
+    /* Reduce fonts for very small screens */
+    #heightUnitFrom,
+    #heightUnitTo,
+    #weightUnitFrom,
+    #weightUnitTo {
+        font-size: 14px !important;
+    }
+
+    /* Optimize gender buttons for small screens */
+    .gender-btn {
+        padding: 0.5rem 0.25rem !important;
+        font-size: 14px !important;
+    }
+
+    .gender-btn i {
+        height: 0.875rem !important;
+        width: 0.875rem !important;
+    }
+
+    /* Further reduce padding on very small devices */
+    .p-8,
+    .p-6,
+    .p-4 {
+        padding-left: 0.375rem !important;
+        padding-right: 0.375rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    /* Fix result boxes */
+    #heightResultValue,
+    #weightResultValue {
+        padding: 0.375rem !important;
+    }
 }
