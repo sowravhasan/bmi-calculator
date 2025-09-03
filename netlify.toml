@@ -1,11 +1,10 @@
-# BMI Calculator Deploy Configuration for Netlify
+# Netlify Configuration
 
-# Build settings
 [build]
   publish = "."
   command = "echo 'Static site - no build required'"
 
-# Headers for SEO and Security
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -41,11 +40,26 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
-# SPA routing fallback
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Sitemap header
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+    Cache-Control = "public, max-age=86400"
+
+# RSS header
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml"
+    Cache-Control = "public, max-age=3600"
+
+# Robots.txt header
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain"
+    Cache-Control = "public, max-age=86400"
 
 # SEO-friendly redirects
 [[redirects]]
@@ -62,3 +76,9 @@
   from = "/bmi-calculator"
   to = "/"
   status = 301
+
+# SPA fallback (must be last)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
