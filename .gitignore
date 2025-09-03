@@ -1,0 +1,14 @@
+# Ignore structured-data.json since it's now consolidated in index.html
+structured-data.json
+structured-data.json.bak
+
+# General files to ignore
+.DS_Store
+.env
+.env.local
+.env.*.local
+node_modules/
+dist/
+.cache/
+.tmp/
+*.log

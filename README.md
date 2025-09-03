@@ -60,8 +60,7 @@
 │   ├── 📄 netlify.toml            # Netlify deployment config
 │   ├── 📄 robots.txt              # Search engine crawler instructions
 │   ├── 📄 rss.xml                 # RSS feed for updates
-│   ├── 📄 sitemap.xml             # XML sitemap for SEO
-│   └── 📄 structured-data.json    # JSON-LD structured data
+│   └── 📄 sitemap.xml             # XML sitemap for SEO
 ├── 📂 docs/                       # Documentation folder (reserved)
 └── 📂 .well-known/               # Web standards directory
 ```
