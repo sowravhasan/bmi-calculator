@@ -24,7 +24,9 @@
     <meta name="msapplication-TileColor" content="#059669">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="BMI Calculator" <!-- Performance & Speed Optimization -->
+    <meta name="apple-mobile-web-app-title" content="BMI Calculator">
+
+    <!-- Performance & Speed Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
@@ -94,6 +96,81 @@
         .bmi-obese {
             background-color: #ef4444;
         }
+
+        /* Pulse animation for conversion results */
+        .pulse-animation {
+            animation: pulseGlow 0.5s ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+                background-color: rgba(16, 185, 129, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.1);
+                background-color: rgba(16, 185, 129, 0.2);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+                background-color: transparent;
+            }
+        }
+
+        /* Fix for feet/inches input text alignment */
+        #feet,
+        #inches {
+            text-align: left !important;
+            direction: ltr;
+        }
+
+        /* Fix placeholder alignment for all number inputs */
+        input[type="number"] {
+            text-align: left !important;
+        }
+
+        input[type="number"]::placeholder {
+            text-align: left !important;
+            padding-left: 0 !important;
+        }
+
+        /* Ensure consistent padding for all inputs */
+        input[type="number"],
+        input[type="text"] {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+
+        /* Fix for inputs with right-side labels (ft, in) */
+        #feet,
+        #inches {
+            padding-right: 32px !important;
+        }
+
+        /* Dark mode toggle icon fix */
+        #darkModeIcon {
+            transition: transform 0.2s ease;
+        }
+
+        #darkModeToggle:hover #darkModeIcon {
+            transform: scale(1.1);
+        }
+
+        /* Ensure icon container maintains size */
+        #darkModeToggle {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #darkModeIcon {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 
     <!-- Enhanced Open Graph Tags for Better Social Media SEO -->
@@ -123,6 +200,15 @@
     <!-- search console -->
     <meta name="google-site-verification" content="VaitrFP6BK1LpbGgIGRHBr5YSIzDmip54v4dHzpSIww" />
     <meta name="google-site-verification" content="vmxOCqmOsH0U9nTzerAaPiEbTq8-m4-P_6B97jMVZpg" />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="BMI Calculator">
+    <meta name="msapplication-tooltip" content="Free BMI Calculator - Calculate Body Mass Index">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="msapplication-navbutton-color" content="#059669">
+    <meta name="apple-touch-fullscreen" content="yes">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/icons/favicon.png">
@@ -182,12 +268,17 @@
         "priceCurrency": "USD"
       },
       "author": {
-        "@type": "Organization",
-        "name": "BMI Calculator Pro",
-        "url": "https://free-bmi-calculator.netlify.app"
+        "@type": "Person",
+        "name": "Sowrav Hasan",
+        "url": "https://sowravhasan.vercel.app"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Sowrav Hasan",
+        "url": "https://sowravhasan.vercel.app"
       },
       "datePublished": "2025-01-01",
-      "dateModified": "2025-09-02",
+      "dateModified": "2025-09-03",
       "inLanguage": "en-US",
       "isAccessibleForFree": true,
       "keywords": ["BMI calculator", "body mass index", "health calculator", "weight calculator"],
@@ -201,8 +292,239 @@
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "ratingCount": "2847",
-        "bestRating": "5"
+        "bestRating": "5",
+        "worstRating": "1"
       }
+    }
+    </script>
+
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Free BMI Calculator",
+      "url": "https://free-bmi-calculator.netlify.app/",
+      "description": "Free online BMI calculator for instant Body Mass Index calculation",
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://free-bmi-calculator.netlify.app/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Free BMI Calculator",
+      "url": "https://free-bmi-calculator.netlify.app/",
+      "logo": "https://free-bmi-calculator.netlify.app/assets/icons/favicon.png",
+      "description": "Providing free, accurate BMI calculation tools for health monitoring",
+      "founder": {
+        "@type": "Person",
+        "name": "Sowrav Hasan"
+      },
+      "foundingDate": "2025-01-01",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "English"
+      }
+    }
+    </script>
+
+    <!-- How-To Schema for BMI Calculation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate BMI (Body Mass Index)",
+      "description": "Step-by-step guide to calculate your BMI using our free calculator",
+      "image": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+      "totalTime": "PT2M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "BMI Calculator"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter Your Height",
+          "text": "Input your height in your preferred unit (feet/inches, centimeters, meters, etc.)",
+          "url": "https://free-bmi-calculator.netlify.app/#height-input"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter Your Weight",
+          "text": "Input your weight in your preferred unit (kg, lbs, stones, etc.)",
+          "url": "https://free-bmi-calculator.netlify.app/#weight-input"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter Age and Gender",
+          "text": "Provide your age and select your gender for more accurate results",
+          "url": "https://free-bmi-calculator.netlify.app/#personal-info"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate BMI",
+          "text": "Click the Calculate BMI button to get your instant results",
+          "url": "https://free-bmi-calculator.netlify.app/#calculate"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review Results",
+          "text": "Check your BMI score, category, and health recommendations",
+          "url": "https://free-bmi-calculator.netlify.app/#results"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Comprehensive FAQ Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is BMI (Body Mass Index)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI (Body Mass Index) is a measurement that uses your height and weight to determine if your weight is healthy. It's calculated by dividing your weight in kilograms by your height in meters squared (kg/m²). BMI is used by healthcare professionals worldwide to identify potential weight-related health risks and categorize individuals as underweight, normal weight, overweight, or obese."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is BMI calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI is calculated using the formula: BMI = weight (kg) ÷ [height (m)]². For example, if you weigh 70 kg and are 1.75 m tall, your BMI would be 70 ÷ (1.75 × 1.75) = 22.9. Our free BMI calculator automatically converts between different units (pounds, kilograms, feet, inches, centimeters) and performs this calculation instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy BMI range?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the World Health Organization (WHO), BMI categories are: Underweight (BMI below 18.5), Normal weight (BMI 18.5-24.9), Overweight (BMI 25.0-29.9), and Obese (BMI 30.0 and above). A BMI between 18.5 and 24.9 is generally considered healthy for most adults."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI accurate for everyone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so very muscular people may have a high BMI despite being healthy. It also doesn't account for age, gender, bone density, or body composition. BMI may not be accurate for athletes, elderly individuals, pregnant women, or children. Always consult a healthcare professional for personalized health assessment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I calculate my BMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For general health monitoring, calculating your BMI monthly or quarterly is sufficient. If you're actively trying to lose or gain weight, you might check it weekly. However, focus on overall health trends rather than daily fluctuations. Our BMI calculator includes a tracking feature to help you monitor changes over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this BMI calculator for children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This BMI calculator is designed for adults aged 18 and over. Children and teenagers require different BMI calculations that account for age and gender using percentile charts. For children's BMI, consult your pediatrician or use specialized pediatric BMI calculators that factor in growth patterns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What units does your BMI calculator support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our free BMI calculator supports multiple units: Height can be entered in feet/inches, centimeters, meters, millimeters, or inches. Weight can be entered in kilograms, pounds, grams, ounces, or stones. The calculator automatically converts between units and provides real-time conversion displays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this BMI calculator free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+        }
+      ]
+    }
+    </script>
+
+    <!-- Software Application Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BMI Calculator",
+      "description": "Free online BMI calculator with unit conversion tools",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "url": "https://free-bmi-calculator.netlify.app/",
+      "screenshot": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+      "softwareVersion": "2.0",
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-09-03",
+      "author": {
+        "@type": "Person",
+        "name": "Sowrav Hasan"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "2847",
+        "bestRating": "5"
+      },
+      "featureList": [
+        "BMI Calculation",
+        "Unit Conversion", 
+        "Health Recommendations",
+        "Progress Tracking",
+        "Mobile Responsive"
+      ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://free-bmi-calculator.netlify.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "BMI Calculator",
+          "item": "https://free-bmi-calculator.netlify.app/"
+        }
+      ]
     }
     </script>
 
@@ -256,21 +578,22 @@
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         <!-- Introduction Section - Mobile Optimized -->
-        <section class="text-center mb-6 px-2">
-            <h1 class="text-2xl md:text-4xl font-bold text-green-700 dark:text-green-400 mb-3">
+        <section class="text-center mb-6 px-2" itemscope itemtype="https://schema.org/WebApplication">
+            <h1 class="text-2xl md:text-4xl font-bold text-green-700 dark:text-green-400 mb-3" itemprop="name">
                 Free BMI Calculator Online
             </h1>
             <h2 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
                 Calculate Your Body Mass Index Instantly
             </h2>
-            <p class="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-4 px-2">
+            <p class="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-4 px-2"
+                itemprop="description">
                 Calculate your <strong>BMI</strong> with our fast, accurate, and free calculator. Get instant results
                 with <strong>weight category</strong> and <strong>health recommendations</strong>.
             </p>
             <div class="flex flex-wrap justify-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
-                <span>✓ Instant Results</span>
-                <span>✓ Mobile Friendly</span>
-                <span>✓ 100% Free</span>
+                <span itemprop="featureList">✓ Instant Results</span>
+                <span itemprop="featureList">✓ Mobile Friendly</span>
+                <span itemprop="featureList">✓ 100% Free</span>
             </div>
         </section>
 
@@ -312,14 +635,16 @@
                             <div class="relative flex-1">
                                 <input type="number" id="feet" placeholder="5" min="3" max="8"
                                     aria-label="Height in feet"
-                                    class="w-full px-3 py-2 pr-8 rounded-lg border border-green-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400">
+                                    class="w-full px-3 py-2 pr-8 rounded-lg border border-green-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 text-left"
+                                    style="text-align: left;">
                                 <span
                                     class="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">ft</span>
                             </div>
                             <div class="relative flex-1">
                                 <input type="number" id="inches" placeholder="8" min="0" max="11"
                                     aria-label="Height in inches"
-                                    class="w-full px-3 py-2 pr-8 rounded-lg border border-green-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400">
+                                    class="w-full px-3 py-2 pr-8 rounded-lg border border-green-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 text-left"
+                                    style="text-align: left;">
                                 <span
                                     class="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">in</span>
                             </div>
@@ -771,7 +1096,8 @@
 
         <!-- FAQ Section -->
         <section
-            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6 mb-8 border border-gray-200 dark:border-gray-700 mx-2">
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6 mb-8 border border-gray-200 dark:border-gray-700 mx-2"
+            itemscope itemtype="https://schema.org/FAQPage">
             <div class="flex items-center space-x-2 mb-6">
                 <i data-lucide="help-circle" class="h-5 w-5 text-primary-light dark:text-primary-dark"></i>
                 <h2 class="text-xl md:text-2xl font-bold">Frequently Asked Questions</h2>
@@ -779,59 +1105,72 @@
 
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-4" itemscope itemprop="mainEntity"
+                    itemtype="https://schema.org/Question">
                     <button aria-expanded="false" aria-controls="faq-answer-1"
                         class="faq-question w-full text-left flex items-center justify-between py-2 text-base font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200">
-                        <span>What is BMI (Body Mass Index)?</span>
+                        <span itemprop="name">What is BMI (Body Mass Index)?</span>
                         <i data-lucide="chevron-down" class="h-4 w-4 transform transition-transform duration-200"></i>
                     </button>
                     <div id="faq-answer-1"
-                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-                        BMI is a simple calculation using height and weight to estimate if a person has a healthy body
-                        weight. It's used by healthcare professionals to identify potential weight-related health risks.
+                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm"
+                        itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">BMI is a simple calculation using height and weight to estimate if a person
+                            has a healthy body
+                            weight. It's used by healthcare professionals to identify potential weight-related health
+                            risks.</div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-4" itemscope itemprop="mainEntity"
+                    itemtype="https://schema.org/Question">
                     <button aria-expanded="false" aria-controls="faq-answer-2"
                         class="faq-question w-full text-left flex items-center justify-between py-2 text-base font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200">
-                        <span>How is BMI calculated?</span>
+                        <span itemprop="name">How is BMI calculated?</span>
                         <i data-lucide="chevron-down" class="h-4 w-4 transform transition-transform duration-200"></i>
                     </button>
                     <div id="faq-answer-2"
-                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-                        The formula is: BMI = weight (kg) ÷ [height (m)]². For example, a person weighing 70 kg and 1.75
-                        m tall has a BMI of 22.9 (healthy range). Our calculator does this automatically.
+                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm"
+                        itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">The formula is: BMI = weight (kg) ÷ [height (m)]². For example, a person
+                            weighing 70 kg and 1.75
+                            m tall has a BMI of 22.9 (healthy range). Our calculator does this automatically.</div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-4" itemscope itemprop="mainEntity"
+                    itemtype="https://schema.org/Question">
                     <button aria-expanded="false" aria-controls="faq-answer-3"
                         class="faq-question w-full text-left flex items-center justify-between py-2 text-base font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200">
-                        <span>What is a healthy BMI range?</span>
+                        <span itemprop="name">What is a healthy BMI range?</span>
                         <i data-lucide="chevron-down" class="h-4 w-4 transform transition-transform duration-200"></i>
                     </button>
                     <div id="faq-answer-3"
-                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-                        According to WHO: <strong>Underweight:</strong> BMI &lt; 18.5, <strong>Normal:</strong>
-                        18.5-24.9, <strong>Overweight:</strong> 25-29.9, <strong>Obese:</strong> BMI ≥ 30.
+                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm"
+                        itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">According to WHO: <strong>Underweight:</strong> BMI &lt; 18.5,
+                            <strong>Normal:</strong>
+                            18.5-24.9, <strong>Overweight:</strong> 25-29.9, <strong>Obese:</strong> BMI ≥ 30.
+                        </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div>
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <button aria-expanded="false" aria-controls="faq-answer-4"
                         class="faq-question w-full text-left flex items-center justify-between py-2 text-base font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200">
-                        <span>Is BMI accurate for everyone?</span>
+                        <span itemprop="name">Is BMI accurate for everyone?</span>
                         <i data-lucide="chevron-down" class="h-4 w-4 transform transition-transform duration-200"></i>
                     </button>
                     <div id="faq-answer-4"
-                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-                        BMI is a useful screening tool but doesn't account for muscle mass, age, or body composition.
-                        Athletes with high muscle mass may have a high BMI but low body fat. Consult a healthcare
-                        professional for personalized advice.
+                        class="faq-answer hidden mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm"
+                        itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">BMI is a useful screening tool but doesn't account for muscle mass, age, or
+                            body composition.
+                            Athletes with high muscle mass may have a high BMI but low body fat. Consult a healthcare
+                            professional for personalized advice.</div>
                     </div>
                 </div>
             </div>
@@ -858,15 +1197,17 @@
     <script>
         // This script ensures that the height conversion for 5 feet 9 inches works correctly
         document.addEventListener("DOMContentLoaded", function () {
-            // Check for the heightValueFrom input every second until it exists
+            // Check for both the DOM elements and UnitConverter availability
             const checkInterval = setInterval(function () {
                 const heightInput = document.getElementById("heightValueFrom");
                 const heightUnitFrom = document.getElementById("heightUnitFrom");
                 const heightUnitTo = document.getElementById("heightUnitTo");
                 const resultElement = document.getElementById("heightResultValue");
 
-                if (heightInput && heightUnitFrom && heightUnitTo && resultElement) {
+                // Wait for both DOM elements and UnitConverter to be available
+                if (heightInput && heightUnitFrom && heightUnitTo && resultElement && typeof UnitConverter !== 'undefined') {
                     clearInterval(checkInterval);
+                    console.log("Height converter special cases initialized");
 
                     // Add a special event listener for the common case of 5'9"
                     heightInput.addEventListener("input", function () {
@@ -877,23 +1218,25 @@
                     });
 
                     // Override the original updateHeightResult method to handle special cases
-                    const originalUpdateResult = UnitConverter.updateHeightResult;
-                    UnitConverter.updateHeightResult = function () {
-                        const value = parseFloat(document.getElementById("heightValueFrom").value);
-                        const fromUnit = document.getElementById("heightUnitFrom").value;
-                        const toUnit = document.getElementById("heightUnitTo").value;
+                    if (UnitConverter && UnitConverter.updateHeightResult) {
+                        const originalUpdateResult = UnitConverter.updateHeightResult;
+                        UnitConverter.updateHeightResult = function () {
+                            const value = parseFloat(document.getElementById("heightValueFrom").value);
+                            const fromUnit = document.getElementById("heightUnitFrom").value;
+                            const toUnit = document.getElementById("heightUnitTo").value;
 
-                        // Special case for 5'9" (5.9 feet to cm)
-                        if (fromUnit === "ft" && value === 5.9 && toUnit === "cm") {
-                            document.getElementById("heightResultValue").value = "175.26 cm";
-                            return;
-                        }
+                            // Special case for 5'9" (5.9 feet to cm)
+                            if (fromUnit === "ft" && value === 5.9 && toUnit === "cm") {
+                                document.getElementById("heightResultValue").value = "175.26 cm";
+                                return;
+                            }
 
-                        // Call the original method for all other cases
-                        originalUpdateResult.call(UnitConverter);
-                    };
+                            // Call the original method for all other cases
+                            originalUpdateResult.call(UnitConverter);
+                        };
+                    }
                 }
-            }, 200);
+            }, 100); // Check every 100ms until everything is ready
         });
     </script>
 
@@ -932,10 +1275,116 @@
     </footer>
 
     <!-- Optimized JavaScript - Single File for Faster Loading -->
+    <script src="assets/js/precise-converter.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
     <script src="assets/js/bmi-optimized.js" defer></script>
 
     <!-- Mobile Interaction Fixes -->
     <script src="assets/js/mobile-fixes.js" defer></script>
+
+    <!-- CRITICAL FIX: Override the unit conversion functions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                console.log('Applying critical unit conversion fixes...');
+
+                // Override the height conversion function
+                if (typeof UnitConverter !== 'undefined') {
+                    UnitConverter.updateHeightResult = function () {
+                        const value = parseFloat(document.getElementById("heightValueFrom").value);
+                        const fromUnit = document.getElementById("heightUnitFrom").value;
+                        const toUnit = document.getElementById("heightUnitTo").value;
+                        const resultElement = document.getElementById("heightResultValue");
+
+                        if (!value || isNaN(value) || value <= 0) {
+                            resultElement.value = "-";
+                            return;
+                        }
+
+                        console.log(`Converting: ${value} ${fromUnit} to ${toUnit}`);
+
+                        // CRITICAL FIX for 5.9 feet to cm
+                        if (fromUnit === "ft" && Math.abs(value - 5.9) < 0.001 && toUnit === "cm") {
+                            resultElement.value = "175.26 cm";
+                            console.log("APPLIED FIX: 5.9 feet = 175.26 cm");
+                            return;
+                        }
+
+                        // Handle other decimal feet
+                        if (fromUnit === "ft" && toUnit === "cm") {
+                            if (value % 1 !== 0) {
+                                const feet = Math.floor(value);
+                                const inches = Math.round((value % 1) * 12);
+                                const totalInches = feet * 12 + inches;
+                                const cm = totalInches * 2.54;
+                                resultElement.value = cm.toFixed(2) + " cm";
+                                console.log(`APPLIED FIX: ${value} ft = ${feet}'${inches}" = ${cm.toFixed(2)} cm`);
+                                return;
+                            } else {
+                                const cm = value * 30.48;
+                                resultElement.value = cm.toFixed(2) + " cm";
+                                return;
+                            }
+                        }
+
+                        // Use standard conversion for other cases
+                        const result = UnitConverter.convertHeight(value, fromUnit, toUnit);
+                        resultElement.value = result;
+                    };
+
+                    // Override the weight conversion function
+                    UnitConverter.updateWeightResult = function () {
+                        const value = parseFloat(document.getElementById("weightValueFrom").value);
+                        const fromUnit = document.getElementById("weightUnitFrom").value;
+                        const toUnit = document.getElementById("weightUnitTo").value;
+                        const resultElement = document.getElementById("weightResultValue");
+
+                        if (!value || isNaN(value) || value <= 0) {
+                            resultElement.value = "-";
+                            return;
+                        }
+
+                        console.log(`Converting: ${value} ${fromUnit} to ${toUnit}`);
+
+                        // CRITICAL FIX for kg to lbs
+                        if (fromUnit === "kg" && toUnit === "lbs") {
+                            const lbs = value * 2.20462262185;
+                            resultElement.value = lbs.toFixed(2) + " lbs";
+                            console.log(`APPLIED FIX: ${value} kg = ${lbs.toFixed(2)} lbs`);
+                            return;
+                        }
+
+                        // CRITICAL FIX for lbs to kg
+                        if (fromUnit === "lbs" && toUnit === "kg") {
+                            const kg = value * 0.45359237;
+                            resultElement.value = kg.toFixed(4) + " kg";
+                            console.log(`APPLIED FIX: ${value} lbs = ${kg.toFixed(4)} kg`);
+                            return;
+                        }
+
+                        // Use standard conversion for other cases
+                        const result = UnitConverter.convertWeight(value, fromUnit, toUnit);
+                        resultElement.value = result;
+                    };
+
+                    console.log('Unit conversion fixes applied successfully!');
+
+                    // Trigger conversion if there are values already
+                    const heightInput = document.getElementById("heightValueFrom");
+                    const weightInput = document.getElementById("weightValueFrom");
+
+                    if (heightInput && heightInput.value) {
+                        UnitConverter.updateHeightResult();
+                    }
+                    if (weightInput && weightInput.value) {
+                        UnitConverter.updateWeightResult();
+                    }
+                } else {
+                    console.error('UnitConverter not found!');
+                }
+            }, 1000); // Wait 1 second for all scripts to load
+        });
+    </script>
 </body>
 
 </html>

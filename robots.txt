@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Main sitemap
+# Main sitemap - make sure this URL is accessible
 Sitemap: https://free-bmi-calculator.netlify.app/sitemap.xml
 
 # Block sensitive/system files

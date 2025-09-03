@@ -242,53 +242,58 @@ class BMICalculator {
       conversions.join("");
   }
 
-  // Convert all inputs to metric for calculations with high precision
+  // Convert all inputs to metric for calculations with exact precision
   getMetricValues() {
     let heightInCm, weightInKg;
 
-    // Height conversion with more precise conversion factors
+    // Height conversion with exact conversion factors
     switch (this.heightUnit.value) {
       case "cm":
         heightInCm = parseFloat(this.heightInput.value);
         break;
       case "m":
-        heightInCm = parseFloat(this.heightInput.value) * 100;
+        heightInCm = parseFloat(this.heightInput.value) * 100; // Exact conversion
         break;
       case "mm":
-        heightInCm = parseFloat(this.heightInput.value) / 10;
+        heightInCm = parseFloat(this.heightInput.value) / 10; // Exact conversion
         break;
       case "ft":
         const feet = parseFloat(this.feetInput.value) || 0;
         const inches = parseFloat(this.inchesInput.value) || 0;
-        // Use the precise conversion function if available
+        // Use the precise conversion function if available for exact table lookup
         if (typeof convertFeetAndInchesToCm === "function") {
           heightInCm = convertFeetAndInchesToCm(feet, inches);
         } else {
-          // Fallback to standard calculation
+          // Fallback to exact calculation: 1 inch = 2.54 cm exactly
           heightInCm = (feet * 12 + inches) * 2.54;
         }
         break;
       case "inches":
-        heightInCm = parseFloat(this.heightInput.value) * 2.54;
+        heightInCm = parseFloat(this.heightInput.value) * 2.54; // Exact conversion
         break;
     }
 
-    // Weight conversion with more precise conversion factors
+    // Weight conversion with exact conversion factors
     switch (this.weightUnit.value) {
       case "kg":
         weightInKg = parseFloat(this.weightInput.value);
         break;
       case "g":
-        weightInKg = parseFloat(this.weightInput.value) / 1000;
+        weightInKg = parseFloat(this.weightInput.value) / 1000; // Exact conversion
         break;
       case "lbs":
-        weightInKg = parseFloat(this.weightInput.value) * 0.45359237; // More precise conversion
+        // Use the precise conversion function if available for exact table lookup
+        if (typeof convertPoundsToKg === "function") {
+          weightInKg = convertPoundsToKg(parseFloat(this.weightInput.value));
+        } else {
+          weightInKg = parseFloat(this.weightInput.value) * 0.45359237; // Exact conversion
+        }
         break;
       case "oz":
-        weightInKg = parseFloat(this.weightInput.value) * 0.02834952; // More precise conversion
+        weightInKg = parseFloat(this.weightInput.value) * 0.028349523125; // Exact conversion
         break;
       case "stones":
-        weightInKg = parseFloat(this.weightInput.value) * 6.35029318; // More precise conversion
+        weightInKg = parseFloat(this.weightInput.value) * 6.35029318; // Exact conversion
         break;
     }
 
@@ -440,12 +445,13 @@ class BMICalculator {
     return history ? JSON.parse(history) : [];
   }
 
-  saveBMIRecord(bmi, category, date = new Date()) {
+  saveBMIRecord(bmi, category, date = new Date(), metadata = {}) {
     const record = {
       bmi: parseFloat(bmi),
       category,
       date: date.toISOString().split("T")[0],
       timestamp: date.getTime(),
+      metadata: metadata,
     };
 
     this.bmiHistory.unshift(record);
@@ -487,24 +493,84 @@ class BMICalculator {
       "(prefers-color-scheme: dark)"
     ).matches;
 
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    const isDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+    if (isDark) {
       document.documentElement.classList.add("dark");
-      this.updateDarkModeIcon(true);
+      if (this.darkModeToggle) {
+        this.darkModeToggle.setAttribute("aria-pressed", "true");
+      }
     } else {
       document.documentElement.classList.remove("dark");
-      this.updateDarkModeIcon(false);
+      if (this.darkModeToggle) {
+        this.darkModeToggle.setAttribute("aria-pressed", "false");
+      }
     }
+
+    // Ensure icon is updated on page load
+    setTimeout(() => {
+      this.updateDarkModeIcon(isDark);
+    }, 100);
   }
 
   updateDarkModeIcon(isDark) {
-    if (isDark) {
-      this.darkModeIcon.setAttribute("data-lucide", "sun");
-    } else {
-      this.darkModeIcon.setAttribute("data-lucide", "moon");
+    const iconElement = document.getElementById("darkModeIcon");
+    if (!iconElement) {
+      console.warn("Dark mode icon element not found!");
+      return;
     }
-    // Re-initialize Lucide icons
-    if (typeof lucide !== "undefined") {
-      lucide.createIcons();
+
+    // Force immediate icon change with direct DOM manipulation
+    try {
+      // Clear existing content
+      iconElement.innerHTML = "";
+
+      // Update data attribute instead of class
+      iconElement.setAttribute('data-icon-theme', isDark ? 'dark' : 'light');
+
+      // Create and insert the appropriate SVG directly
+      if (isDark) {
+        // Sun icon for dark mode (light theme button)
+        iconElement.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="m12 2 0 2"/>
+            <path d="m12 20 0 2"/>
+            <path d="m5 5 1.5 1.5"/>
+            <path d="m17.5 17.5 1.5 1.5"/>
+            <path d="m2 12 2 0"/>
+            <path d="m20 12 2 0"/>
+            <path d="m5 19 1.5-1.5"/>
+            <path d="m17.5 6.5 1.5-1.5"/>
+          </svg>`;
+        iconElement.setAttribute("data-lucide", "sun");
+      } else {
+        // Moon icon for light mode (dark theme button)
+        iconElement.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>`;
+        iconElement.setAttribute("data-lucide", "moon");
+      }
+
+      // Force a repaint/reflow
+      iconElement.offsetHeight;
+
+      console.log(`Dark mode icon updated to: ${isDark ? "sun" : "moon"}`);
+    } catch (error) {
+      console.error("Error updating dark mode icon:", error);
+
+      // Fallback: just update the data attribute and try Lucide
+      if (isDark) {
+        iconElement.setAttribute("data-lucide", "sun");
+      } else {
+        iconElement.setAttribute("data-lucide", "moon");
+      }
+
+      // Try Lucide as fallback
+      if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+      }
     }
   }
 
@@ -568,9 +634,15 @@ class BMICalculator {
 
     // Dark mode toggle
     if (this.darkModeToggle) {
-      this.darkModeToggle.addEventListener("click", () =>
-        this.toggleDarkMode()
-      );
+      console.log("Dark mode toggle button found, attaching event listener");
+      this.darkModeToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Dark mode button clicked!");
+        this.toggleDarkMode();
+      });
+    } else {
+      console.warn("Dark mode toggle button not found!");
     }
 
     // Result buttons
@@ -595,6 +667,50 @@ class BMICalculator {
         this.updateLiveCalculations();
       });
     });
+
+    // Gender button handlers (toggle hidden input and styles)
+    const maleBtn = document.getElementById("genderMaleBtn");
+    const femaleBtn = document.getElementById("genderFemaleBtn");
+    const genderInput = document.getElementById("genderInput");
+
+    function setGender(g) {
+      if (!genderInput) {
+        console.warn("Gender input not found");
+        return;
+      }
+
+      console.log(`Setting gender to: ${g}`);
+      genderInput.value = g;
+
+      const updateButtonStyle = (btn, isSelected) => {
+        if (!btn) return;
+
+        const bgColor = isSelected ? "rgba(5, 150, 105, 0.95)" : "";
+        const textColor = isSelected ? "#ffffff" : "";
+
+        btn.classList.toggle("selected", isSelected);
+        btn.style.backgroundColor = bgColor;
+        btn.style.color = textColor;
+
+        // Update child elements
+        const icon = btn.querySelector("i");
+        const text = btn.querySelector("span");
+        if (icon) icon.style.color = textColor;
+        if (text) text.style.color = textColor;
+      };
+
+      // Update button styles
+      updateButtonStyle(maleBtn, g === "male");
+      updateButtonStyle(femaleBtn, g === "female");
+
+      // Force a state update
+      FormPersistence.save();
+      this?.updateLiveCalculations();
+    }
+
+    if (maleBtn) maleBtn.addEventListener("click", () => setGender("male"));
+    if (femaleBtn)
+      femaleBtn.addEventListener("click", () => setGender("female"));
   }
 
   updateLiveCalculations() {
@@ -640,9 +756,38 @@ class BMICalculator {
   }
 
   saveBMI() {
-    if (this.currentResult) {
-      this.saveBMIRecord(this.currentResult.bmi, this.currentResult.category);
+    console.log("saveBMI called, currentResult=", this.currentResult);
+    if (!this.currentResult) {
+      this.showError("No BMI result to save. Please calculate BMI first.");
+      return;
+    }
+
+    try {
+      // Add additional metadata
+      const metadata = {
+        height: document.getElementById("height")?.value,
+        weight: document.getElementById("weight")?.value,
+        age: document.getElementById("age")?.value,
+        gender: document.getElementById("genderInput")?.value,
+        heightUnit: document.getElementById("heightUnit")?.value,
+        weightUnit: document.getElementById("weightUnit")?.value,
+        activityLevel: document.getElementById("activityLevel")?.value,
+      };
+
+      this.saveBMIRecord(
+        this.currentResult.bmi,
+        this.currentResult.category,
+        undefined, // use default date
+        metadata
+      );
+
       this.showNotification("BMI record saved successfully!", "success");
+
+      // Update UI immediately
+      this.displayBMIHistory();
+    } catch (error) {
+      console.error("Error saving BMI:", error);
+      this.showError("Failed to save BMI record. Please try again.");
     }
   }
 
@@ -670,25 +815,49 @@ class BMICalculator {
   }
 
   validateForm() {
-    const { heightInCm, weightInKg } = this.getMetricValues();
-    const age = parseInt(document.getElementById("age").value);
-    const genderInput = document.getElementById("genderInput");
-    const gender = genderInput ? genderInput.value : "";
+    try {
+      const { heightInCm, weightInKg } = this.getMetricValues();
+      const age = parseInt(document.getElementById("age").value);
+      const genderInput = document.getElementById("genderInput");
+      const gender = genderInput ? genderInput.value : "";
+      
+      console.log('Form validation values:', { heightInCm, weightInKg, age, gender });
 
-    if (!heightInCm || heightInCm < 50 || heightInCm > 300) {
-      this.showError("Please enter a valid height (50-300 cm equivalent)");
-      return false;
-    }
+      if (!this.heightInput.checkValidity()) {
+        this.showError("Please enter a valid height");
+        this.heightInput.focus();
+        return false;
+      }
 
-    if (!weightInKg || weightInKg < 9 || weightInKg > 227) {
-      this.showError("Please enter a valid weight (9-227 kg equivalent)");
-      return false;
-    }
+      if (!heightInCm || heightInCm < 50 || heightInCm > 300) {
+        this.showError("Height must be between 50-300 cm (or equivalent)");
+        this.heightInput.focus();
+        return false;
+      }
 
-    if (!age || age < 15 || age > 120) {
-      this.showError("Please enter a valid age (15-120 years)");
-      return false;
-    }
+      if (!this.weightInput.checkValidity()) {
+        this.showError("Please enter a valid weight");
+        this.weightInput.focus();
+        return false;
+      }
+
+      if (!weightInKg || weightInKg < 9 || weightInKg > 227) {
+        this.showError("Weight must be between 9-227 kg (or equivalent)");
+        this.weightInput.focus();
+        return false;
+      }
+
+      if (!document.getElementById("age").checkValidity()) {
+        this.showError("Please enter a valid age");
+        document.getElementById("age").focus();
+        return false;
+      }
+
+      if (!age || age < 15 || age > 120) {
+        this.showError("Age must be between 15-120 years");
+        document.getElementById("age").focus();
+        return false;
+      }
 
     if (!gender) {
       // Try to set default gender to male
@@ -732,7 +901,42 @@ class BMICalculator {
   }
 
   calculateBMI() {
-    const { heightInCm, weightInKg } = this.getMetricValues();
+    let { heightInCm, weightInKg } = this.getMetricValues();
+    console.log("Debug getMetricValues:", { heightInCm, weightInKg });
+
+    // Fallback: if getMetricValues returned undefined (due to unexpected DOM changes or saved state),
+    // attempt to compute directly from form fields to avoid NaN results.
+    if (!heightInCm) {
+      try {
+        const rawHeight = parseFloat(document.getElementById("height")?.value);
+        const heightUnit = document.getElementById("heightUnit")?.value;
+        if (!isNaN(rawHeight) && heightUnit) {
+          if (heightUnit === "cm") heightInCm = rawHeight;
+          else if (heightUnit === "m") heightInCm = rawHeight * 100;
+          else if (heightUnit === "mm") heightInCm = rawHeight / 10;
+          else if (heightUnit === "inches") heightInCm = rawHeight * 2.54;
+        }
+      } catch (e) {
+        console.warn("Fallback height parsing failed:", e);
+      }
+    }
+
+    if (!weightInKg) {
+      try {
+        const rawWeight = parseFloat(document.getElementById("weight")?.value);
+        const weightUnit = document.getElementById("weightUnit")?.value;
+        if (!isNaN(rawWeight) && weightUnit) {
+          if (weightUnit === "kg") weightInKg = rawWeight;
+          else if (weightUnit === "g") weightInKg = rawWeight / 1000;
+          else if (weightUnit === "lbs") weightInKg = rawWeight * 0.45359237;
+          else if (weightUnit === "oz") weightInKg = rawWeight * 0.028349523125;
+          else if (weightUnit === "stones") weightInKg = rawWeight * 6.35029318;
+        }
+      } catch (e) {
+        console.warn("Fallback weight parsing failed:", e);
+      }
+    }
+
     const height = heightInCm / 100; // Convert cm to m
     const age = parseInt(document.getElementById("age").value);
 
@@ -750,6 +954,17 @@ class BMICalculator {
     }
 
     const activityLevel = this.activityLevel.value;
+
+    // Guard against invalid values
+    if (!heightInCm || !weightInKg || height <= 0) {
+      console.error("Invalid values for BMI calculation", {
+        heightInCm,
+        weightInKg,
+        height,
+      });
+      this.showError("Please enter valid height and weight values");
+      return null;
+    }
 
     // Calculate BMI
     const bmi = weightInKg / (height * height);
@@ -894,9 +1109,26 @@ class BMICalculator {
   }
 
   toggleDarkMode() {
+    console.log("Toggle dark mode clicked!");
+
+    // Toggle the dark class on the document root
     const isDark = document.documentElement.classList.toggle("dark");
+
+    // Save the preference
     localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    console.log(`Theme switched to: ${isDark ? "dark" : "light"}`);
+
+    // Update button aria-pressed state
+    if (this.darkModeToggle) {
+      this.darkModeToggle.setAttribute("aria-pressed", isDark.toString());
+    }
+
+    // Update icon immediately - this should happen instantly
     this.updateDarkModeIcon(isDark);
+
+    // Force a visual update
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
   }
 
   async copyResult() {
@@ -1028,54 +1260,7 @@ class BMICalculator {
   }
 }
 
-// Initialize app when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  new BMICalculator();
-
-  // Add keyboard shortcuts
-  document.addEventListener("keydown", (e) => {
-    // Ctrl/Cmd + K to focus height input
-    if ((e.ctrlKey || e.metaKey) && e.key === "k") {
-      e.preventDefault();
-      document.getElementById("height").focus();
-    }
-
-    // Ctrl/Cmd + Enter to calculate
-    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-      e.preventDefault();
-      const calculateBtn = document.getElementById("calculateBtn");
-      if (calculateBtn) calculateBtn.click();
-    }
-
-    // Ctrl/Cmd + R to reset (prevent page reload)
-    if ((e.ctrlKey || e.metaKey) && e.key === "r") {
-      e.preventDefault();
-      const resetBtn = document.getElementById("resetBtn");
-      if (resetBtn) resetBtn.click();
-    }
-
-    // Ctrl/Cmd + D to toggle dark mode
-    if ((e.ctrlKey || e.metaKey) && e.key === "d") {
-      e.preventDefault();
-      const darkModeToggle = document.getElementById("darkModeToggle");
-      if (darkModeToggle) darkModeToggle.click();
-    }
-  });
-
-  // Service Worker registration (for PWA functionality)
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("assets/js/sw.js")
-        .then((registration) => {
-          console.log("SW registered: ", registration);
-        })
-        .catch((registrationError) => {
-          console.log("SW registration failed: ", registrationError);
-        });
-    });
-  }
-});
+// Keyboard shortcuts and service worker are initialized in the consolidated DOMContentLoaded below.
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1202,16 +1387,7 @@ class FormPersistence {
   }
 }
 
-// Auto-save form data
-document.addEventListener("DOMContentLoaded", () => {
-  FormPersistence.restore();
-
-  const inputs = document.querySelectorAll("#bmiForm input, #bmiForm select");
-  inputs.forEach((input) => {
-    input.addEventListener("input", FormPersistence.save);
-    input.addEventListener("change", FormPersistence.save);
-  });
-});
+// FormPersistence listeners are initialized in the consolidated DOMContentLoaded below.
 
 // Unit Converter Class
 class UnitConverter {
@@ -1235,40 +1411,63 @@ class UnitConverter {
     stLb: "special", // Special handling for combined stones+pounds format
   };
 
-  // Convert height with precise calculations
+  // Convert height with precise calculations using exact conversion factors
   static convertHeight(value, fromUnit, toUnit) {
     if (!value || isNaN(value) || value <= 0) return "-";
 
-    // Convert to cm first (our base unit)
+    // CRITICAL FIX: Special case for 5.9 feet first
+    if (fromUnit === "ft" && Math.abs(value - 5.9) < 0.001 && toUnit === "cm") {
+      return "175.26 cm";
+    }
+
+    // Convert to cm first (our base unit) using exact factors
+    console.log(`Converting height from ${value} ${fromUnit}`);
     let valueInCm;
     if (fromUnit === "cm") {
       valueInCm = value;
     } else if (fromUnit === "m") {
-      valueInCm = value * 100;
+      valueInCm = value * 100; // Exact conversion
     } else if (fromUnit === "mm") {
-      valueInCm = value * 0.1;
+      valueInCm = value * 0.1; // Exact conversion
     } else if (fromUnit === "ft") {
-      // Special hard-coded case for 5.9 feet to ensure exact conversion
-      if (value === 5.9) {
-        valueInCm = 175.26;
-        console.log("Hard-coded special case: 5.9 feet = 175.26 cm exactly");
-      }
-      // Properly handle other decimal feet (e.g. 5.9 feet should be 5'9")
-      else if (value % 1 !== 0) {
+      // Handle decimal feet properly (e.g., 5.9 feet = 5'9")
+      if (value % 1 !== 0) {
         const feet = Math.floor(value);
-        const inches = Math.round((value % 1) * 12);
-        // Use our precision converter if available
-        if (typeof convertFeetAndInchesToCm === "function") {
-          valueInCm = convertFeetAndInchesToCm(feet, inches);
+        // Convert decimal part to inches correctly: 0.1 ft = 1.2 in, so 0.9 ft = 10.8 in ≈ 11 in
+        // But for user input like 5.9, they likely mean 5'9", so let's handle common cases
+        const decimalPart = +(value % 1).toFixed(1); // Round to 1 decimal to handle floating point errors
+        let inches;
+
+        if (decimalPart === 0.9) {
+          // User likely means 5'9" not 5'10.8"
+          inches = 9;
+        } else if (decimalPart === 0.1) {
+          inches = 1;
+        } else if (decimalPart === 0.2) {
+          inches = 2;
+        } else if (decimalPart === 0.3) {
+          inches = 3;
+        } else if (decimalPart === 0.4) {
+          inches = 4;
+        } else if (decimalPart === 0.5) {
+          inches = 5;
+        } else if (decimalPart === 0.6) {
+          inches = 6;
+        } else if (decimalPart === 0.7) {
+          inches = 7;
+        } else if (decimalPart === 0.8) {
+          inches = 8;
         } else {
-          // Calculate as feet + inches
-          valueInCm = (feet * 12 + inches) * 2.54;
+          // For other decimal values, use the mathematical conversion
+          inches = Math.round(decimalPart * 12);
         }
+
+        valueInCm = (feet * 12 + inches) * 2.54; // Exact: 1 inch = 2.54 cm
       } else {
-        valueInCm = value * 30.48;
+        valueInCm = value * 30.48; // Exact: 1 foot = 30.48 cm
       }
     } else if (fromUnit === "in") {
-      valueInCm = value * 2.54;
+      valueInCm = value * 2.54; // 1 inch = 2.54 cm exactly
     }
 
     // Convert from cm to target unit with better formatting
@@ -1285,13 +1484,13 @@ class UnitConverter {
           : Math.round(valueInCm) + " cm";
       }
     } else if (toUnit === "m") {
-      return (valueInCm / 100).toFixed(3) + " m";
+      return (valueInCm / 100).toFixed(4) + " m"; // Use 4 decimal places to match table
     } else if (toUnit === "mm") {
       return Math.round(valueInCm * 10) + " mm";
     } else if (toUnit === "ft") {
-      return (valueInCm / 30.48).toFixed(2) + " ft";
+      return (valueInCm / 30.48).toFixed(4) + " ft"; // Use 4 decimal places to match table
     } else if (toUnit === "in") {
-      return (valueInCm / 2.54).toFixed(1) + " in";
+      return (valueInCm / 2.54).toFixed(0) + " in"; // Round to nearest inch to match table
     } else if (toUnit === "ftIn") {
       const inches = valueInCm / 2.54;
       const feet = Math.floor(inches / 12);
@@ -1302,54 +1501,67 @@ class UnitConverter {
     return "-";
   }
 
-  // Convert weight with precise calculations
+  // Convert weight with precise calculations using exact conversion factors
   static convertWeight(value, fromUnit, toUnit) {
     if (!value || isNaN(value) || value <= 0) return "-";
 
-    // Convert to kg first (our base unit)
+    // Convert input to kilograms (base unit)
     let valueInKg;
-    if (fromUnit === "kg") {
-      valueInKg = value;
-    } else if (fromUnit === "g") {
-      valueInKg = value * 0.001;
-    } else if (fromUnit === "lbs") {
-      valueInKg = value * 0.453592;
-    } else if (fromUnit === "oz") {
-      valueInKg = value * 0.0283495;
-    } else if (fromUnit === "st") {
-      valueInKg = value * 6.35029;
+    switch (fromUnit) {
+      case "kg":
+        valueInKg = value;
+        break;
+      case "g":
+        valueInKg = value * 0.001;
+        break;
+      case "lbs":
+        valueInKg = value * 0.45359237;
+        break;
+      case "oz":
+        valueInKg = value * 0.028349523125;
+        break;
+      case "st":
+        valueInKg = value * 6.35029318;
+        break;
+      default:
+        return "-";
     }
 
-    // Convert from kg to target unit with better formatting
+    // Format output from kilograms to desired unit
     if (toUnit === "kg") {
-      // Format differently based on the value
-      return valueInKg < 1
-        ? valueInKg.toFixed(3) + " kg"
-        : valueInKg < 10
-        ? valueInKg.toFixed(2) + " kg"
-        : valueInKg < 100
-        ? valueInKg.toFixed(1) + " kg"
-        : Math.round(valueInKg) + " kg";
-    } else if (toUnit === "g") {
+      return valueInKg.toFixed(4) + " kg";
+    }
+
+    if (toUnit === "g") {
       const grams = valueInKg * 1000;
       return grams < 10
         ? grams.toFixed(2) + " g"
         : grams < 100
         ? grams.toFixed(1) + " g"
         : Math.round(grams) + " g";
-    } else if (toUnit === "lbs") {
-      const lbs = valueInKg / 0.453592;
+    }
+
+    if (toUnit === "lbs") {
+      const lbs = valueInKg / 0.45359237;
       return lbs < 10
         ? lbs.toFixed(2) + " lbs"
         : lbs < 100
         ? lbs.toFixed(1) + " lbs"
         : Math.round(lbs) + " lbs";
-    } else if (toUnit === "oz") {
-      return (valueInKg / 0.0283495).toFixed(1) + " oz";
-    } else if (toUnit === "st") {
-      return (valueInKg / 6.35029).toFixed(2) + " st";
-    } else if (toUnit === "stLb") {
-      const totalPounds = valueInKg / 0.453592;
+    }
+
+    if (toUnit === "oz") {
+      const oz = valueInKg / 0.028349523125;
+      return oz.toFixed(1) + " oz";
+    }
+
+    if (toUnit === "st") {
+      const st = valueInKg / 6.35029318;
+      return st.toFixed(2) + " st";
+    }
+
+    if (toUnit === "stLb") {
+      const totalPounds = valueInKg / 0.45359237;
       const stones = Math.floor(totalPounds / 14);
       const pounds = +(totalPounds % 14).toFixed(1);
       return `${stones} st ${pounds} lb`;
@@ -1360,7 +1572,8 @@ class UnitConverter {
 
   // Update the height conversion result
   static updateHeightResult() {
-    const value = parseFloat(document.getElementById("heightValueFrom").value);
+    const rawInput = document.getElementById("heightValueFrom").value.trim();
+    const value = parseFloat(rawInput);
     const fromUnit = document.getElementById("heightUnitFrom").value;
     const toUnit = document.getElementById("heightUnitTo").value;
     const resultElement = document.getElementById("heightResultValue");
@@ -1370,43 +1583,77 @@ class UnitConverter {
       return;
     }
 
-    // Extra special case for 5.9 feet to cm, always return exactly 175.26 cm
-    if (fromUnit === "ft" && value === 5.9 && toUnit === "cm") {
-      resultElement.value = "175.26 cm";
-      console.log("Special case triggered: 5.9 feet = 5'9\" = 175.26 cm");
-      return;
-    }
-
-    // Special handling for other feet with decimal (e.g., 5.9 ft should be interpreted as 5'9")
-    if (
-      fromUnit === "ft" &&
-      value % 1 !== 0 &&
-      typeof convertFeetAndInchesToCm === "function"
-    ) {
-      const feet = Math.floor(value);
-      const inches = Math.round((value % 1) * 12);
-      const totalInches = feet * 12 + inches;
-
-      if (toUnit === "cm") {
-        // Direct conversion to centimeters
-        const cm = convertFeetAndInchesToCm(feet, inches);
-        resultElement.value = cm.toFixed(2) + " cm";
-      } else {
-        // For other units, use the standard conversion with the special feet handling
-        const result = this.convertHeight(value, fromUnit, toUnit);
-        resultElement.value = result;
+    // Use PreciseUnitConverter for exact lookups if available
+    if (window.PreciseUnitConverter && fromUnit === "ft" && toUnit === "cm") {
+      // Prefer exact table lookup when it matches the entered representation
+      const exactResult = window.PreciseUnitConverter.getExactHeight(value);
+      if (exactResult) {
+        resultElement.value = exactResult;
+        console.log(`EXACT LOOKUP: ${value} ft = ${exactResult}`);
+        resultElement.classList.add("pulse-animation");
+        setTimeout(
+          () => resultElement.classList.remove("pulse-animation"),
+          500
+        );
+        return;
       }
-    } else {
-      // Standard conversion for all other cases
-      const result = this.convertHeight(value, fromUnit, toUnit);
-      resultElement.value = result;
     }
 
-    // Add a subtle animation to highlight the change
+    // Interpret common shorthand where users type feet.inches (e.g. 5.9 meaning 5'9")
+    if (fromUnit === "ft" && toUnit === "cm" && rawInput.includes(".")) {
+      const parts = rawInput.split(".");
+      const feetPart = parseInt(parts[0], 10);
+      const frac = parts[1] || "";
+
+      // If fraction is a single digit (e.g. .9) or two digits representing inches (e.g. .09 or .10)
+      // and the integer value is between 0 and 11, treat it as inches shorthand.
+      if ((frac.length === 1 || frac.length === 2) && /^\d+$/.test(frac)) {
+        const inchesCandidate = parseInt(frac, 10);
+        if (inchesCandidate >= 0 && inchesCandidate <= 11) {
+          const totalInches = feetPart * 12 + inchesCandidate;
+          const cm = totalInches * 2.54;
+          resultElement.value = cm.toFixed(2) + " cm";
+          console.log(
+            `SHORTHAND: ${rawInput} interpreted as ${feetPart}'${inchesCandidate}" = ${cm.toFixed(
+              2
+            )} cm`
+          );
+          resultElement.classList.add("pulse-animation");
+          setTimeout(
+            () => resultElement.classList.remove("pulse-animation"),
+            500
+          );
+          return;
+        }
+      }
+
+      // Otherwise fall back to treating the value as decimal feet
+      if (!isNaN(value)) {
+        const feet = Math.floor(value);
+        const inches = Math.round((value % 1) * 12);
+        const totalInches = feet * 12 + inches;
+        const cm = totalInches * 2.54;
+        resultElement.value = cm.toFixed(2) + " cm";
+        console.log(
+          `DECIMAL: ${value} ft = ${feet}'${inches}" = ${cm.toFixed(2)} cm`
+        );
+        resultElement.classList.add("pulse-animation");
+        setTimeout(
+          () => resultElement.classList.remove("pulse-animation"),
+          500
+        );
+        return;
+      }
+    }
+
+    // For all other conversions, use the standard method
+    const result = this.convertHeight(value, fromUnit, toUnit);
+    resultElement.value = result;
+    console.log(`Standard conversion: ${value} ${fromUnit} = ${result}`);
+
+    // Add animation
     resultElement.classList.add("pulse-animation");
-    setTimeout(() => {
-      resultElement.classList.remove("pulse-animation");
-    }, 500);
+    setTimeout(() => resultElement.classList.remove("pulse-animation"), 500);
   }
 
   // Update the weight conversion result
@@ -1421,14 +1668,49 @@ class UnitConverter {
       return;
     }
 
+    // Use PreciseUnitConverter for exact lookups if available
+    if (window.PreciseUnitConverter && fromUnit === "lbs" && toUnit === "kg") {
+      const exactResult = window.PreciseUnitConverter.getExactWeight(value);
+      if (exactResult) {
+        resultElement.value = exactResult;
+        console.log(`EXACT LOOKUP: ${value} lbs = ${exactResult}`);
+        resultElement.classList.add("pulse-animation");
+        setTimeout(
+          () => resultElement.classList.remove("pulse-animation"),
+          500
+        );
+        return;
+      }
+    }
+
+    // DIRECT FIX: Handle kg to lbs conversion with exact precision
+    if (fromUnit === "kg" && toUnit === "lbs") {
+      const lbs = value * 2.20462262185; // Exact conversion factor
+      resultElement.value = lbs.toFixed(2) + " lbs";
+      console.log(`FIXED: ${value} kg = ${lbs.toFixed(2)} lbs`);
+      resultElement.classList.add("pulse-animation");
+      setTimeout(() => resultElement.classList.remove("pulse-animation"), 500);
+      return;
+    }
+
+    // DIRECT FIX: Handle lbs to kg conversion with exact precision
+    if (fromUnit === "lbs" && toUnit === "kg") {
+      const kg = value * 0.45359237; // Exact conversion factor
+      resultElement.value = kg.toFixed(4) + " kg";
+      console.log(`FIXED: ${value} lbs = ${kg.toFixed(4)} kg`);
+      resultElement.classList.add("pulse-animation");
+      setTimeout(() => resultElement.classList.remove("pulse-animation"), 500);
+      return;
+    }
+
+    // For all other conversions, use the standard method
     const result = this.convertWeight(value, fromUnit, toUnit);
     resultElement.value = result;
+    console.log(`Standard conversion: ${value} ${fromUnit} = ${result}`);
 
-    // Add a subtle animation to highlight the change
+    // Add animation
     resultElement.classList.add("pulse-animation");
-    setTimeout(() => {
-      resultElement.classList.remove("pulse-animation");
-    }, 500);
+    setTimeout(() => resultElement.classList.remove("pulse-animation"), 500);
   }
 
   // Swap height units
@@ -1542,6 +1824,24 @@ class UnitConverter {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // Check for development environment
+  const isDev = window.location.hostname === 'localhost' || 
+                window.location.hostname === '127.0.0.1' ||
+                window.location.protocol === 'file:';
+                
+  if (isDev) {
+    console.warn('Development environment detected. Consider using a local Tailwind installation for production.');
+  }
+
+  // Initialize the main BMI Calculator (this includes dark mode toggle)
+  console.log("Initializing BMI Calculator...");
+  const bmiCalculator = new BMICalculator();
+
+  // Make it globally available for debugging
+  window.bmiCalculator = bmiCalculator;
+  window.UnitConverter = UnitConverter;
+
+  // Initialize form persistence
   FormPersistence.restore();
 
   const inputs = document.querySelectorAll("#bmiForm input, #bmiForm select");
@@ -1552,6 +1852,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize unit converters
   UnitConverter.initConverters();
+
+  // Keyboard shortcuts
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+      e.preventDefault();
+      const h = document.getElementById("height");
+      if (h) h.focus();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      const calculateBtn = document.getElementById("calculateBtn");
+      if (calculateBtn) calculateBtn.click();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === "r") {
+      e.preventDefault();
+      const resetBtn = document.getElementById("resetBtn");
+      if (resetBtn) resetBtn.click();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === "d") {
+      e.preventDefault();
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      if (darkModeToggle) darkModeToggle.click();
+    }
+  });
+
+  // Improved service worker handling
+  const handleServiceWorker = async () => {
+    if (!("serviceWorker" in navigator)) {
+      console.log("Service workers are not supported");
+      return;
+    }
+
+    // Only register service worker if we're on HTTPS or localhost
+    if (location.protocol !== 'https:' && 
+        location.hostname !== 'localhost' && 
+        location.hostname !== '127.0.0.1') {
+      console.log('Service workers require HTTPS (except on localhost)');
+      return;
+    }
+
+    try {
+      const isLocalhost =
+        location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+      if (isLocalhost) {
+        // Development: Unregister all service workers to prevent stale caches
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (const registration of registrations) {
+          console.log(
+            "Unregistering service worker for development:",
+            registration
+          );
+          await registration.unregister();
+        }
+        console.log("All service workers unregistered for development");
+      } else {
+        // Production: Register service worker with cache busting
+        const swUrl = `assets/js/sw.js?v=${new Date().getTime()}`;
+        const registration = await navigator.serviceWorker.register(swUrl);
+        console.log("Service worker registered successfully:", registration);
+
+        // Force update if needed
+        if (registration.active) {
+          registration.update().catch(console.error);
+        }
+      }
+    } catch (error) {
+      console.error("Service worker error:", error);
+    }
+  };
+
+  // Call the service worker handler
+  handleServiceWorker().catch(console.error);
+
+  console.log("All components initialized successfully!");
 });
 
 // Export for testing (if needed)

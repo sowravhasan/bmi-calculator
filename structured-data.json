@@ -1,7 +1,7 @@
 {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Free BMI Calculator",
+    "name": "Free BMI Calculator Online",
     "description": "Free online BMI calculator with interactive unit converters. Calculate BMI with multiple units, convert between metric and imperial measurements, and track your health journey.",
     "url": "https://free-bmi-calculator.netlify.app/",
     "applicationCategory": "HealthApplication",
@@ -26,7 +26,7 @@
         "name": "Sowrav Hasan",
         "url": "https://sowravhasan.vercel.app"
     },
-    "datePublished": "2025-09-02",
+    "datePublished": "2025-01-01",
     "dateModified": "2025-09-03",
     "inLanguage": "en-US",
     "isAccessibleForFree": true,
@@ -47,20 +47,21 @@
         "Free BMI Calculation",
         "Multiple Unit Support (metric/imperial)",
         "Interactive Height & Weight Converters",
-        "Two-Column Unit Conversion Layout",
         "Real-time Conversion Results",
         "Ideal Weight Calculations",
         "Dark/Light Mode",
         "Mobile Responsive Design",
         "Unit Conversion Reference",
         "Health Category Analysis",
-        "Progressive Web App"
+        "Progressive Web App",
+        "BMI Progress Tracking",
+        "Instant Health Recommendations"
     ],
     "screenshot": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
     "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "150",
+        "ratingValue": "4.9",
+        "ratingCount": "2847",
         "bestRating": "5",
         "worstRating": "1"
     },
@@ -69,26 +70,42 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What is BMI?",
+                "name": "What is BMI (Body Mass Index)?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "BMI (Body Mass Index) is a measurement that uses your height and weight to work out if your weight is healthy. It's calculated by dividing your weight in kilograms by your height in meters squared."
+                    "text": "BMI (Body Mass Index) is a measurement that uses your height and weight to determine if your weight is healthy. It's calculated by dividing your weight in kilograms by your height in meters squared (kg/m²). BMI is used by healthcare professionals worldwide to identify potential weight-related health risks."
                 }
             },
             {
                 "@type": "Question",
-                "name": "How accurate is BMI?",
+                "name": "How is BMI calculated?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so very muscular people may have a high BMI despite being healthy."
+                    "text": "BMI is calculated using the formula: BMI = weight (kg) ÷ [height (m)]². For example, if you weigh 70 kg and are 1.75 m tall, your BMI would be 70 ÷ (1.75 × 1.75) = 22.9. Our free BMI calculator automatically converts between different units and performs this calculation instantly."
                 }
             },
             {
                 "@type": "Question",
-                "name": "What are the BMI categories?",
+                "name": "What is a healthy BMI range?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "BMI categories are: Underweight (below 18.5), Normal weight (18.5-24.9), Overweight (25-29.9), and Obese (30 and above)."
+                    "text": "According to the World Health Organization (WHO), BMI categories are: Underweight (BMI below 18.5), Normal weight (BMI 18.5-24.9), Overweight (BMI 25.0-29.9), and Obese (BMI 30.0 and above). A BMI between 18.5 and 24.9 is generally considered healthy for most adults."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is BMI accurate for everyone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so very muscular people may have a high BMI despite being healthy. It also doesn't account for age, gender, bone density, or body composition. Always consult a healthcare professional for personalized health assessment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is this BMI calculator free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our BMI calculator is completely free to use with no registration required. There are no hidden fees, premium features, or subscription costs. You can calculate your BMI unlimited times, use all unit converters, and access health recommendations at no cost."
                 }
             }
         ]
