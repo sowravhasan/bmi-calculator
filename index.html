@@ -251,233 +251,198 @@
     <link rel="stylesheet" href="assets/css/dark-mode-enhancements.css">
 
     <!-- Enhanced Structured Data for Better SEO -->
-    <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Free BMI Calculator Online",
-        "description": "Calculate your BMI with our fast, accurate, and free calculator. Get instant results with weight category and health recommendations.",
-        "url": "https://free-bmi-calculator.netlify.app/",
-        "applicationCategory": "HealthApplication",
-        "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript",
-        "softwareVersion": "1.0.0",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2026-12-31"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sowrav Hasan",
-          "url": "https://sowravhasan.vercel.app",
-          "sameAs": [
-            "https://linkedin.com/in/sowravhasan",
-            "https://github.com/sowravhasan"
-          ]
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Sowrav Hasan",
-          "url": "https://sowravhasan.vercel.app",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://free-bmi-calculator.netlify.app/assets/icons/favicon.png",
-            "width": "512",
-            "height": "512"
-          }
-        },
-        "datePublished": "2025-01-01T00:00:00Z",
-        "dateModified": "2025-09-03T20:20:42Z",
-        "inLanguage": "en-US",
-        "isAccessibleForFree": true,
-        "keywords": "BMI calculator, Body Mass Index, health calculator, weight calculator, unit converter, height converter, weight converter, fitness tool, health assessment, BMI chart, ideal weight calculator",
-        "featureList": [
-          "✓ Instant Results",
-          "✓ Mobile Friendly",
-          "✓ 100% Free",
-          "✓ Multiple Unit Support",
-          "✓ Health Recommendations",
-          "✓ BMI Progress Tracking",
-          "✓ Dark/Light Mode"
-        ],
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
-          "width": "1200",
-          "height": "630"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "2847",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
-      }
+    <!-- Application Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["WebApplication", "SoftwareApplication"],
+  "@id": "https://free-bmi-calculator.netlify.app/#app",
+  "name": "Free BMI Calculator Online",
+  "description": "Free online BMI calculator with unit conversion tools, instant results, and health recommendations.",
+  "url": "https://free-bmi-calculator.netlify.app/",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "softwareVersion": "2.0",
+  "screenshot": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "datePublished": "2025-01-01T00:00:00Z",
+  "dateModified": "2025-09-03T20:20:42Z",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "keywords": "BMI calculator, Body Mass Index, health calculator, weight calculator, unit converter, fitness tool, health assessment, BMI chart, ideal weight calculator",
+  "author": {
+    "@type": "Person",
+    "name": "Sowrav Hasan",
+    "url": "https://sowravhasan.vercel.app",
+    "sameAs": [
+      "https://linkedin.com/in/sowrav-hasan",
+      "https://github.com/sowravhasan"
     ]
-    </script>
+  },
+  "publisher": {
+    "@id": "https://free-bmi-calculator.netlify.app/#org"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2026-12-31"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": 2847,
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "featureList": [
+    "Instant BMI Calculation",
+    "Multiple Unit Support",
+    "Health Recommendations",
+    "Progress Tracking",
+    "Mobile Responsive",
+    "Dark/Light Mode"
+  ]
+}
+</script>
 
-    <!-- Website Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Free BMI Calculator",
-      "url": "https://free-bmi-calculator.netlify.app/",
-      "description": "Free online BMI calculator for instant Body Mass Index calculation",
-      "inLanguage": "en-US",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://free-bmi-calculator.netlify.app/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+
+   <!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://free-bmi-calculator.netlify.app/#website",
+  "url": "https://free-bmi-calculator.netlify.app/",
+  "name": "Free BMI Calculator",
+  "description": "Free online BMI calculator for instant Body Mass Index calculation",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@id": "https://free-bmi-calculator.netlify.app/#org"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://free-bmi-calculator.netlify.app/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 
     <!-- Organization Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Free BMI Calculator",
-      "url": "https://free-bmi-calculator.netlify.app/",
-      "logo": "https://free-bmi-calculator.netlify.app/assets/icons/favicon.png",
-      "description": "Providing free, accurate BMI calculation tools for health monitoring",
-      "founder": {
-        "@type": "Person",
-        "name": "Sowrav Hasan"
-      },
-      "foundingDate": "2025-01-01",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "availableLanguage": "English"
-      }
-    }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://free-bmi-calculator.netlify.app/#org",
+  "name": "Free BMI Calculator",
+  "url": "https://free-bmi-calculator.netlify.app/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://free-bmi-calculator.netlify.app/assets/icons/favicon.png",
+    "width": 512,
+    "height": 512
+  },
+  "description": "Providing free, accurate BMI calculation tools for health monitoring",
+  "founder": {
+    "@type": "Person",
+    "name": "Sowrav Hasan"
+  },
+  "foundingDate": "2025-01-01",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  }
+}
+</script>
 
-    <!-- How-To Schema for BMI Calculation -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate BMI (Body Mass Index)",
-      "description": "Step-by-step guide to calculate your BMI using our free calculator",
-      "image": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
-      "totalTime": "PT2M",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "0"
-      },
-      "tool": [
-        {
-          "@type": "HowToTool",
-          "name": "BMI Calculator"
-        }
-      ],
-      "step": [
-        {
-          "@type": "HowToStep",
-          "name": "Enter Your Height",
-          "text": "Input your height in your preferred unit (feet/inches, centimeters, meters, etc.)",
-          "url": "https://free-bmi-calculator.netlify.app/#height-input"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Enter Your Weight",
-          "text": "Input your weight in your preferred unit (kg, lbs, stones, etc.)",
-          "url": "https://free-bmi-calculator.netlify.app/#weight-input"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Enter Age and Gender",
-          "text": "Provide your age and select your gender for more accurate results",
-          "url": "https://free-bmi-calculator.netlify.app/#personal-info"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Calculate BMI",
-          "text": "Click the Calculate BMI button to get your instant results",
-          "url": "https://free-bmi-calculator.netlify.app/#calculate"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Review Results",
-          "text": "Check your BMI score, category, and health recommendations",
-          "url": "https://free-bmi-calculator.netlify.app/#results"
-        }
-      ]
-    }
-    </script>
 
-    <!-- Software Application Schema -->
-    <script type="application/ld+json">
+   <!-- How-To Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "@id": "https://free-bmi-calculator.netlify.app/#howto",
+  "name": "How to Calculate BMI (Body Mass Index)",
+  "description": "Step-by-step guide to calculate your BMI using our free calculator",
+  "image": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
+  "totalTime": "PT2M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "tool": [
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "HowToTool",
+      "name": "BMI Calculator"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Enter Your Height",
+      "text": "Input your height in your preferred unit (feet/inches, centimeters, meters, etc.)",
+      "url": "https://free-bmi-calculator.netlify.app/#height-input"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Enter Your Weight",
+      "text": "Input your weight in your preferred unit (kg, lbs, stones, etc.)",
+      "url": "https://free-bmi-calculator.netlify.app/#weight-input"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Enter Age and Gender",
+      "text": "Provide your age and select your gender for more accurate results",
+      "url": "https://free-bmi-calculator.netlify.app/#personal-info"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Calculate BMI",
+      "text": "Click the Calculate BMI button to get your instant results",
+      "url": "https://free-bmi-calculator.netlify.app/#calculate"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Review Results",
+      "text": "Check your BMI score, category, and health recommendations",
+      "url": "https://free-bmi-calculator.netlify.app/#results"
+    }
+  ]
+}
+</script>
+
+   <!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://free-bmi-calculator.netlify.app/#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://free-bmi-calculator.netlify.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
       "name": "BMI Calculator",
-      "description": "Free online BMI calculator with unit conversion tools",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Any",
-      "url": "https://free-bmi-calculator.netlify.app/",
-      "screenshot": "https://free-bmi-calculator.netlify.app/assets/images/og-image.jpg",
-      "softwareVersion": "2.0",
-      "datePublished": "2025-01-01",
-      "dateModified": "2025-09-03",
-      "author": {
-        "@type": "Person",
-        "name": "Sowrav Hasan"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "2847",
-        "bestRating": "5"
-      },
-      "featureList": [
-        "BMI Calculation",
-        "Unit Conversion", 
-        "Health Recommendations",
-        "Progress Tracking",
-        "Mobile Responsive"
-      ]
+      "item": "https://free-bmi-calculator.netlify.app/"
     }
-    </script>
-
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://free-bmi-calculator.netlify.app/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "BMI Calculator",
-          "item": "https://free-bmi-calculator.netlify.app/"
-        }
-      ]
-    }
-    </script>
+  ]
+}
+</script>
 
     <!-- Tailwind Config -->
     <script>
