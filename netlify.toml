@@ -64,7 +64,6 @@
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
     Cache-Control = "public, max-age=3600"
-    X-Robots-Tag = "noindex"
 
 # RSS header
 [[headers]]
@@ -104,9 +103,42 @@
   status = 301
 
 [[redirects]]
+  from = "/body-mass-index"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/health-calculator"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/weight-calculator"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/index"
   to = "/"
   status = 301
+
+# File extension redirects
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/robots"
+  to = "/robots.txt"
+  status = 301
+
+# Force HTTPS
+[[redirects]]
+  from = "http://free-bmi-calculator.netlify.app/*"
+  to = "https://free-bmi-calculator.netlify.app/:splat"
+  status = 301
+  force = true
 
 # SPA fallback (must be last)
 [[redirects]]

@@ -1,7 +1,17 @@
-# SEO-friendly redirects
-/bmi              /             301
-/calculator       /             301
-/bmi-calculator   /             301
+# SEO-friendly redirects for common BMI calculator URLs
+/bmi                    /             301
+/calculator             /             301
+/bmi-calculator         /             301
+/body-mass-index        /             301
+/health-calculator      /             301
+/weight-calculator      /             301
 
-# SPA fallback
-/*               /index.html    200
+# Force HTTPS (if not handled by Netlify)
+http://free-bmi-calculator.netlify.app/*   https://free-bmi-calculator.netlify.app/:splat   301!
+
+# Handle common file extensions
+/sitemap                /sitemap.xml   301
+/robots                 /robots.txt    301
+
+# SPA fallback - must be last
+/*                      /index.html    200

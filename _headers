@@ -5,10 +5,15 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+# Main page - Enhanced SEO headers
+/
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
-  X-Robots-Tag: noindex
   Cache-Control: public, max-age=86400
 
 /rss.xml
