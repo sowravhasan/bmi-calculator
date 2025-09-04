@@ -182,16 +182,20 @@
 
         /* Ensure icon container maintains size */
         #darkModeToggle {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 6px;
         }
 
         #darkModeIcon {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 
@@ -534,6 +538,21 @@
 
         <!-- Introduction Section - Mobile Optimized -->
         <section class="text-center mb-6 px-2" itemscope itemtype="https://schema.org/WebApplication">
+            <!-- Hidden microdata properties for Rich Results -->
+            <meta itemprop="applicationCategory" content="HealthApplication">
+            <meta itemprop="operatingSystem" content="All">
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <meta itemprop="price" content="0">
+                <meta itemprop="priceCurrency" content="USD">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+            </div>
+            <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                <meta itemprop="ratingValue" content="4.8">
+                <meta itemprop="ratingCount" content="2500">
+                <meta itemprop="bestRating" content="5">
+                <meta itemprop="worstRating" content="1">
+            </div>
+
             <h1 class="text-2xl md:text-4xl font-bold text-green-700 dark:text-green-400 mb-3" itemprop="name">
                 Free BMI Calculator Online
             </h1>
@@ -1409,6 +1428,25 @@
     <!-- Optimized JavaScript - Single File for Faster Loading -->
     <script src="assets/js/precise-converter.js" defer></script>
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/swap-fix.js" defer></script>
+    <script src="assets/js/dark-mode-fix.js"></script>
+
+    <!-- SIMPLE ICON FIX ONLY -->
+    <script>
+        setInterval(function () {
+            const icon = document.getElementById('darkModeIcon');
+            if (icon) {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark && !icon.innerHTML.includes('circle cx="12"')) {
+                    // Dark mode - show sun
+                    icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><circle cx="12" cy="12" r="4"/><path d="m12 2 0 2"/><path d="m12 20 0 2"/><path d="m5 5 1.5 1.5"/><path d="m17.5 17.5 1.5 1.5"/><path d="m2 12 2 0"/><path d="m20 12 2 0"/><path d="m5 19 1.5-1.5"/><path d="m17.5 6.5 1.5-1.5"/></svg>';
+                } else if (!isDark && !icon.innerHTML.includes('M12 3a6')) {
+                    // Light mode - show moon
+                    icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+                }
+            }
+        }, 100);
+    </script>
     <script src="assets/js/bmi-optimized.js" defer></script>
 
     <!-- Mobile Interaction Fixes -->

@@ -1715,40 +1715,60 @@ class UnitConverter {
 
   // Swap height units
   static swapHeightUnits() {
+    console.log("swapHeightUnits called");
     const fromUnitSelect = document.getElementById("heightUnitFrom");
     const toUnitSelect = document.getElementById("heightUnitTo");
+
+    if (!fromUnitSelect || !toUnitSelect) {
+      console.log("Height unit selects not found", { fromUnitSelect, toUnitSelect });
+      return;
+    }
 
     const fromUnit = fromUnitSelect.value;
     const toUnit = toUnitSelect.value;
 
+    console.log("Swapping height units:", { fromUnit, toUnit });
+
     // Don't swap if either unit is a special combined format
     if (fromUnit === "ftIn" || toUnit === "ftIn") {
+      console.log("Cannot swap feet+inches format");
       return;
     }
 
     fromUnitSelect.value = toUnit;
     toUnitSelect.value = fromUnit;
 
-    this.updateHeightResult();
+    console.log("Height units swapped, updating result");
+    UnitConverter.updateHeightResult();
   }
 
   // Swap weight units
   static swapWeightUnits() {
+    console.log("swapWeightUnits called");
     const fromUnitSelect = document.getElementById("weightUnitFrom");
     const toUnitSelect = document.getElementById("weightUnitTo");
+
+    if (!fromUnitSelect || !toUnitSelect) {
+      console.log("Weight unit selects not found", { fromUnitSelect, toUnitSelect });
+      return;
+    }
 
     const fromUnit = fromUnitSelect.value;
     const toUnit = toUnitSelect.value;
 
+    console.log("Swapping weight units:", { fromUnit, toUnit });
+
     // Don't swap if either unit is a special combined format
     if (fromUnit === "stLb" || toUnit === "stLb") {
+      console.log("Cannot swap stones+pounds format");
       return;
     }
 
     fromUnitSelect.value = toUnit;
     toUnitSelect.value = fromUnit;
 
-    this.updateWeightResult();
+    console.log("Weight units swapped, updating result");
+    UnitConverter.updateWeightResult();
   }
 
   // Initialize the converters
@@ -1769,42 +1789,52 @@ class UnitConverter {
 
     // Height swap button
     if (swapHeightUnitsBtn) {
-      swapHeightUnitsBtn.addEventListener("click", () => {
-        this.swapHeightUnits();
+      console.log("Setting up height swap button listener");
+      swapHeightUnitsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Height swap button clicked");
+        UnitConverter.swapHeightUnits();
       });
+    } else {
+      console.log("Height swap button not found");
     }
 
     // Real-time height conversion
     [heightValueFrom, heightUnitFrom, heightUnitTo].forEach((el) => {
       if (el) {
         el.addEventListener("input", () => {
-          this.updateHeightResult();
+          UnitConverter.updateHeightResult();
         });
 
         // Also update on change for better user experience
         el.addEventListener("change", () => {
-          this.updateHeightResult();
+          UnitConverter.updateHeightResult();
         });
       }
     });
 
     // Weight swap button
     if (swapWeightUnitsBtn) {
-      swapWeightUnitsBtn.addEventListener("click", () => {
-        this.swapWeightUnits();
+      console.log("Setting up weight swap button listener");
+      swapWeightUnitsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Weight swap button clicked");
+        UnitConverter.swapWeightUnits();
       });
+    } else {
+      console.log("Weight swap button not found");
     }
 
     // Real-time weight conversion
     [weightValueFrom, weightUnitFrom, weightUnitTo].forEach((el) => {
       if (el) {
         el.addEventListener("input", () => {
-          this.updateWeightResult();
+          UnitConverter.updateWeightResult();
         });
 
         // Also update on change for better user experience
         el.addEventListener("change", () => {
-          this.updateWeightResult();
+          UnitConverter.updateWeightResult();
         });
       }
     });
