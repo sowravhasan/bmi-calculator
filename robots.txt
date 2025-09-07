@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Main sitemap - make sure this URL is accessible
+# Main sitemap - contains fragment URLs for key content sections
 Sitemap: https://free-bmi-calculator.netlify.app/sitemap.xml
 
 # Block sensitive/system files
@@ -16,13 +16,32 @@ Disallow: /temp/
 Disallow: /*.tmp$
 Disallow: /*.log$
 
-# Allow important SEO/public files
+# Allow important SEO/public files (matching sitemap.xml entries)
 Allow: /humans.txt
 Allow: /robots.txt
 Allow: /sitemap.xml
 Allow: /rss.xml
 Allow: /manifest.json
+Allow: /Ads.txt
+Allow: /google6cf348dae9b116c4.html
 Allow: /.well-known/
+Allow: /assets/
+
+# Explicitly allow main content sections (fragment URLs in sitemap)
+# BMI Calculator Form
+Allow: /#bmiForm
+# FAQ Section  
+Allow: /#frequently-asked-questions
+# Unit Conversion Tools
+Allow: /#unit-conversion-tools
+# Understanding BMI Guide
+Allow: /#understanding-bmi-complete-guide
+# BMI Results Section
+Allow: /#resultsCard
+
+# Performance optimization - crawl delay for heavy bots
+User-agent: *
+Crawl-delay: 1
 
 # Specific bot instructions
 User-agent: Googlebot

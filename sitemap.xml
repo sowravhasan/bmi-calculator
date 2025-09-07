@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main BMI Calculator Application Page -->
   <url>
     <loc>https://free-bmi-calculator.netlify.app/</loc>
-    <lastmod>2025-09-04</lastmod>
+    <lastmod>2025-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- BMI Calculator Form - Main Tool -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/#bmiForm</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- FAQ Section - Rich Content for Search -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/#frequently-asked-questions</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Unit Conversion Tools - High-Value Feature -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/#unit-conversion-tools</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Understanding BMI Guide - Educational Content -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/#understanding-bmi-complete-guide</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- BMI Results Section - Interactive Feature -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/#resultsCard</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- RSS Feed for Content Updates -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/rss.xml</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Progressive Web App Manifest -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/manifest.json</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>rarely</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Human-readable Information -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/humans.txt</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>rarely</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Google Site Verification File -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/google6cf348dae9b116c4.html</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- Ads Configuration -->
+  <url>
+    <loc>https://free-bmi-calculator.netlify.app/Ads.txt</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>rarely</changefreq>
+    <priority>0.1</priority>
+  </url>
+
 </urlset>
